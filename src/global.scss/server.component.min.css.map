@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,KAAK,AAAC,CACJ,UAAU,CAAE,YAAY,CACzB,AAED,AAAA,KAAK,AAAC,CACJ,WAAW,CAAE,MAAe,CAAC,UAAU,CACxC,AAED,AAAA,KAAK,AAAC,CACJ,YAAY,CAAE,KAAc,CAAC,UAAU,CACvC,aAAa,CAAE,KAAc,CAAC,UAAU,CACzC,AAED,AAAA,IAAI,AAAC,CACH,OAAO,CAhBA,GAAG,CAgBO,UAAU,CAC5B",
+    "sources": [
+        "../app/server.component.scss"
+    ],
+    "names": [],
+    "file": "server.component.min.css"
+}
