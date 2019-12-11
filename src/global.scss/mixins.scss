@@ -1,0 +1,38 @@
+@import './variables.scss';
+
+@mixin tabs-upper-panel {
+  margin: 20px 0;
+  text-align: center;
+  width: 100%;
+  float: left;
+}
+
+@mixin alert-text {
+  font-weight: 400;
+  font-size: 16px;
+}
+@mixin alert-box {
+  box-sizing: border-box;
+  padding: 20px;
+  border: solid 1px;
+}
+
+@mixin alert-box-warn {
+  background-color: yellow;
+  border-color: red;
+}
+
+@mixin alert-box-success {
+  background-color: lightgreen;
+  border-color: darkgreen;
+}
+
+@mixin heading-settings{
+  float: left;
+}
+
+@mixin heading-1 {
+  @include heading-settings;
+  font-size: 22px;
+  font-weight: bold;
+}
