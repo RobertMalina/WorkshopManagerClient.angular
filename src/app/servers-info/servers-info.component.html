@@ -1,0 +1,14 @@
+<div class="header-panel">
+  <span class="info-tab-title">Servers info</span>
+  <span class="message">{{ serverCreationMsg }}</span>
+  <button class="btn btn-primary" [disabled]="!allowServerAdd" (click)="onAddServer()">
+    Add server</button>
+</div>
+<div class="info-tab-container">
+  <div class="info-tab">
+    <app-server></app-server>
+  </div>
+  <div class="info-tab">
+    <app-server></app-server>
+  </div>
+</div>
