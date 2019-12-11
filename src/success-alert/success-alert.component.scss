@@ -1,0 +1,10 @@
+@import '../global.scss/variables.scss';
+@import '../global.scss/mixins.scss';
+
+.alert-container{
+  @include alert-box;
+  @include alert-box-success;
+  .alert-message{
+    @include alert-text;
+  }
+}
