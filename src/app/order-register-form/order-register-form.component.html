@@ -1,0 +1,68 @@
+<div>
+  <h2>Rejestracja nowego zlecenia</h2>
+  <div class="form-group">
+    <h3>Dane zlecenia</h3>
+    <div class="prop-setter-container">
+      <span class="prop-label">Opis samochodu</span>
+      <input class="prop-value" type="text" (input)="checkData()" [(ngModel)]="order.VehicleModel" />
+    </div>
+    <div class="prop-setter-container">
+      <span class="prop-label">Opis przypadku / Uwagi</span>
+      <input class="prop-value" type="text" [(ngModel)]="order.Description" />
+    </div>
+  </div>
+  <div class="form-group" [ngStyle]="{ backgroundColor: getFoundClientStatusColor() }">
+    <h3>Zlecający</h3>
+    <div class="prop-setter-container">
+      <span class="prop-label">Nr telefonu</span>
+      <input class="prop-value" (input)="checkData()" type="text" #typedPhoneNumberInput
+        [(ngModel)]="order.Client.PhoneNumber" />
+      <button class="btn btn-primary" [disabled]="order.Client.PhoneNumber ? false : true"
+        (click)="onFindClientByPhoneNumber(typedPhoneNumberInput)">Znajdź...</button>
+      <span *ngIf="clientCheckErrorMsg" class="info-message warn" [innerHtml]="clientCheckErrorMsg"> </span>
+    </div>
+    <div class="prop-setter-container">
+      <span class="prop-label">Imię</span>
+      <input class="prop-value" (input)="checkData()" type="text" [(ngModel)]="order.Client.FirstName" />
+    </div>
+    <div class="prop-setter-container">
+      <span class="prop-label">Nazwisko</span>
+      <input class="prop-value" (input)="checkData()" type="text" [(ngModel)]="order.Client.LastName" />
+    </div>
+  </div>
+  <div class="prop-setter-container">
+    <span class="prop-label">Data przyjęcia</span>
+    <input class="prop-value" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time"
+      [(ngModel)]="order.DateStart" (input)="checkData()" />
+    <owl-date-time #dt1></owl-date-time>
+  </div>
+
+  <div class="submit-panel">
+    <button class="btn btn-primary" (click)="onSubmitClick()" [disabled]="!isRequiredDataCollected">Zarejestruj</button>
+    <span *ngIf="isRequiredDataCollected; else formNotCompleted"> Zlecenie może zostać zarejestrowane</span>
+    <ng-template #formNotCompleted>
+      <span style="color: red;">Brakuje części wymaganych danych zlecenia...</span>
+    </ng-template>
+  </div>
+
+  <div class="summary-tab">
+    <h3>Podsumowanie</h3>
+    <div class="summary-row">
+      <span class="prop-description">Data przyjęcia: </span>
+      <span class="prop-value" [innerHtml]="order.DateStart | date:'yyyy/MM/dd'"></span>
+    </div>
+    <div class="summary-row">
+      <span class="prop-description">Godzina: </span>
+      <span class="prop-value" [innerHtml]="order.DateStart | date:'hh:mm'"></span>
+    </div>
+    <div class="summary-row">
+      <span class="prop-description">Nr telefonu klienta: </span>
+      <span class="prop-value"
+        [innerHtml]="order.Client.PhoneNumber ? order.Client.PhoneNumber : 'nie ustalono'"></span>
+    </div>
+    <div class="summary-row">
+      <span class="prop-description">Samochód: </span>
+      <span class="prop-value" [innerHtml]="order.VehicleModel ? order.VehicleModel : 'nie ustalono'"></span>
+    </div>
+  </div>
+</div>
