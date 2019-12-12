@@ -9,6 +9,7 @@ export class ServersInfoComponent implements OnInit {
 
   allowServerAdd = false;
   serverCreationMsg = `Add new server to show it's info...`;
+  newServerName = 'Default';
 
   constructor() {
     setTimeout(() => {
@@ -20,6 +21,10 @@ export class ServersInfoComponent implements OnInit {
   }
 
   onAddServer() {
-    this.serverCreationMsg = 'New server was added';
+    this.serverCreationMsg = `New server with name: ${this.newServerName} was added`;
+  }
+
+  onNewServerNameChange(event: any) {
+    this.newServerName = event.target.value;
   }
 }
