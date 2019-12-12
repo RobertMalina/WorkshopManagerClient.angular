@@ -6,6 +6,11 @@ import { AppComponent } from './app.component';
 import { WarningAlertComponent } from '../warning-alert/warning-alert.component';
 import { ServerComponent } from './server/server.component';
 import { ServersInfoComponent } from './servers-info/servers-info.component';
+import { OrderRegisterFormComponent } from './order-register-form/order-register-form.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { ClientService } from '../services/client-service';
 
 @NgModule({
   declarations: [
@@ -13,13 +18,20 @@ import { ServersInfoComponent } from './servers-info/servers-info.component';
     WarningAlertComponent,
     SuccessAlertComponent,
     ServerComponent,
-    ServersInfoComponent
+    ServersInfoComponent,
+    OrderRegisterFormComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ClientService
+  ],
   bootstrap: [
     AppComponent
   ]
