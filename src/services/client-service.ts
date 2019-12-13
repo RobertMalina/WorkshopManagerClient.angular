@@ -13,10 +13,9 @@ export class ClientService {
   loading: boolean;
 
   constructor(private httpClient: HttpClient) {
-    this.port = 4110; // adres serwera proxy
+    this.port = 4210; // 4110 -> port serwera proxy
     this.apiRoot = 'api/clients';
     this.server = 'localhost';
-
     this.loading = false;
   }
 

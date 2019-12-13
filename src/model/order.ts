@@ -4,4 +4,5 @@ interface Order {
   VehicleModel?: string;
   Client?: Client;
   Description?: string;
+  Title?: string;
 }

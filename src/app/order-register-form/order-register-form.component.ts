@@ -28,6 +28,9 @@ export class OrderRegisterFormComponent implements OnInit {
   }
 
   validateModel(): boolean {
+    if (!this.order.Title) {
+      return false;
+    }
     if (!this.order.DateStart) {
       return false;
     }
@@ -43,6 +46,7 @@ export class OrderRegisterFormComponent implements OnInit {
     if (!this.order.Client.LastName) {
       return false;
     }
+
     return true;
   }
 
@@ -53,14 +57,15 @@ export class OrderRegisterFormComponent implements OnInit {
   onFindClientByPhoneNumber(typedPhoneNumber: HTMLInputElement): void {
     this.clientCheckErrorMsg = '';
     this.clientService.findClientByPhoneNumber(typedPhoneNumber.value)
-      .subscribe((data: Client) => {
+      .subscribe((data: any) => {
         console.log(data);
-        if (data) {
+        if (data.length === 0) {
           console.log(`client with phone number ${typedPhoneNumber.value} not found...`);
-          this.foundClient = { Id: null };
+          this.foundClient = { Id: null, PhoneNumber: typedPhoneNumber.value };
+          this.order.Client = this.foundClient;
           this.clientCheckErrorMsg = 'Nie odnaleziono';
         } else {
-          this.foundClient = data;
+          this.foundClient = data[0];
           this.order.Client = this.foundClient;
           this.clientCheckErrorMsg = '';
         }
@@ -73,7 +78,7 @@ export class OrderRegisterFormComponent implements OnInit {
   }
 
   getFoundClientStatusColor(): string {
-    if (this.foundClient === []) {
+    if (!this.foundClient) {
       return '';
     }
     if (this.foundClient.Id === null) {

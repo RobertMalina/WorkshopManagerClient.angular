@@ -7,6 +7,13 @@
   float: left;
 }
 
+@mixin text-area {
+  display: block;
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+}
+
 @mixin alert-text {
   font-weight: 400;
   font-size: 16px;
