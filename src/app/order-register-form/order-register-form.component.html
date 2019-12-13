@@ -10,6 +10,12 @@
       <span class="prop-label">Opis przypadku / Uwagi</span>
       <input class="prop-value" type="text" [(ngModel)]="order.Description" />
     </div>
+    <div class="prop-setter-container">
+      <span class="prop-label">Data przyjęcia</span>
+      <input class="prop-value" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time"
+        [(ngModel)]="order.DateStart" (input)="checkData()" />
+      <owl-date-time #dt1></owl-date-time>
+    </div>
   </div>
   <div class="form-group" [ngStyle]="{ backgroundColor: getFoundClientStatusColor() }">
     <h3>Zlecający</h3>
@@ -30,12 +36,7 @@
       <input class="prop-value" (input)="checkData()" type="text" [(ngModel)]="order.Client.LastName" />
     </div>
   </div>
-  <div class="prop-setter-container">
-    <span class="prop-label">Data przyjęcia</span>
-    <input class="prop-value" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time"
-      [(ngModel)]="order.DateStart" (input)="checkData()" />
-    <owl-date-time #dt1></owl-date-time>
-  </div>
+
 
   <div class="submit-panel">
     <button class="btn btn-primary" (click)="onSubmitClick()" [disabled]="!isRequiredDataCollected">Zarejestruj</button>
