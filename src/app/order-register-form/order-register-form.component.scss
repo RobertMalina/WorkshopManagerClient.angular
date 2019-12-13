@@ -1,0 +1,27 @@
+@import '../../global.scss/mixins.scss';
+
+.form-panel-container {
+  .form-container {
+    .form-group {
+      .prop-setter-container {
+        display: inline-block;
+        margin: 10px 0;
+        width: 100%;
+        padding: 0 4px;
+        input{
+          text-align: center;
+          float: right;
+        }
+        .text-area {
+          @include text-area;
+        }
+        button{
+          float: right;
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+}
+
+
