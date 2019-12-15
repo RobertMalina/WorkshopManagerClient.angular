@@ -1,43 +1,5 @@
 @import '../../global.scss/mixins.scss';
 
-.header-panel{
-  @include tabs-upper-panel;
-  .info-tab-title{
-    @include heading-1;
-  }
-  .btn{
-    float: right;
-  }
-
-
-  .message{
-    display: inline-block;
-    padding: 10px 0;
-  }
+.log.overflow{
+  color: white;
 }
-.value-display{
-  padding: 20px;
-}
-.value-display.defined{
-  border: 1px solid blue;
-  background-color: aquamarine;
-}
-.value-display.undefined{
-  border: 1px solid red;
-  background-color: lightpink;
-}
-
-.info-tab-container{
-  padding: 20px;
-  display: flex;
-  .info-tab {
-    margin:auto;
-    min-height: 300px;
-    width: 300px;
-    padding: 20px;
-    background-color: lightseagreen;
-    text-align: center;
-    font-size: 16px;
-  }
-}
-

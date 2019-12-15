@@ -7,24 +7,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServersInfoComponent implements OnInit {
 
-  allowServerAdd = false;
-  serverCreationMsg = `Add new server to show it's info...`;
-  newServerName = 'Default';
+  display = true;
+  clickLogs = [];
+  startTime: number = Date.now();
 
   constructor() {
-    setTimeout(() => {
-      this.allowServerAdd = true;
-    }, 5000);
+
+  }
+
+  onBtnClick() {
+    this.display = !this.display;
+    this.logClick();
   }
 
   ngOnInit() {
   }
 
-  onAddServer() {
-    this.serverCreationMsg = `New server with name: ${this.newServerName} was added`;
+  logClick() {
+    const clickTimespan = (Date.now() - this.startTime) / 1000;
+    this.clickLogs.push(clickTimespan);
   }
 
-  onNewServerNameChange(event: any) {
-    this.newServerName = event.target.value;
+  getLogIndex(log) {
+    return this.clickLogs.indexOf(log);
+
   }
+
 }

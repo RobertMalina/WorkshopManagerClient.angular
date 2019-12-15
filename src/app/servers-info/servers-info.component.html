@@ -1,29 +1,7 @@
-<div class="header-panel">
-  <span class="info-tab-title">Servers info</span>
-  <span class="message">{{ serverCreationMsg }}</span>
-  <button class="btn btn-primary" [disabled]="!allowServerAdd" (click)="onAddServer()">
-    Add server</button>
-</div>
-<div class="header-panel">
-  <div>
-    Type Server Name:
-    <input type="text" (input)="onNewServerNameChange($event)" />
-  </div>
-  <div>
-    Type Server Name (NgModel):
-    <input type="text" [(ngModel)]="newServerName" />
-  </div>
-</div>
-<div class="header-panel">
-  <div class="value-display" [ngClass]="newServerName ? 'defined' : 'undefined'">
-    New Server with name: <i [innerHtml]="newServerName ? newServerName : 'Not set'"></i> will be added.
-  </div>
-</div>
-<div class="info-tab-container">
-  <div class="info-tab">
-    <app-server></app-server>
-  </div>
-  <div class="info-tab">
-    <app-server></app-server>
-  </div>
-</div>
+<button (click)="onBtnClick()">Display details</button>
+<p [ngStyle]="display ? {display:''} : {display:'none'}">String value = Ania</p>
+
+<p class="log" *ngFor="let log of clickLogs" [ngClass]="{overflow: clickLogs.indexOf(log) > 4 }"
+  [ngStyle]="{backgroundColor : clickLogs.indexOf(log) > 4 ? 'blue' : 'none' }">
+  Time elapsed from last click detected {{ log }} {{ clickLogs.indexOf(log) }} seconds ago.
+</p>
