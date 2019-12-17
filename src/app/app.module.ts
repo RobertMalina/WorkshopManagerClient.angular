@@ -1,25 +1,29 @@
-import { SuccessAlertComponent } from './../success-alert/success-alert.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { WarningAlertComponent } from '../warning-alert/warning-alert.component';
-import { ServersInfoComponent } from './servers-info/servers-info.component';
-import { OrderRegisterFormComponent } from './order-register-form/order-register-form.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ClientService } from '../services/client-service';
 import { OrdersPreviewComponent } from './orders-preview/orders-preview.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OrdersListComponent } from './orders/orders-list/orders-list.component';
+import { OrderDetailsComponent } from './orders/order-details/order-details.component';
+import { OrderRemoveComponent } from './orders/order-remove/order-remove.component';
+import { OrderItemComponent } from './orders/orders-list/order-item/order-item.component';
+import { NaviHeaderComponent } from './navi-header/navi-header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WarningAlertComponent,
-    SuccessAlertComponent,
-    ServersInfoComponent,
-    OrderRegisterFormComponent,
-    OrdersPreviewComponent
+    OrdersPreviewComponent,
+    OrdersComponent,
+    OrdersListComponent,
+    OrderDetailsComponent,
+    OrderRemoveComponent,
+    OrderItemComponent,
+    NaviHeaderComponent
   ],
   imports: [
     BrowserModule,
