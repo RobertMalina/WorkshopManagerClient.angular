@@ -1,0 +1,31 @@
+System ma wyprowadzać wartość szacowanego czasu trwania zlecenia aby oznajmić klientowi kiedy orientacyjnie jego samochód będzie gotowy.
+
+Wartość ta w warunkach rzeczywistych określana jest przez mechaników po diagnostyce,
+która sama w sobie trwać może kilka godzin (demontaż elementów danego układu, metody weryfikacyjne, wykluczanie)
+
+Rozwiązanie:
+
+1. Zmiany strukturalne w bazie:
++ Do Order dodajemy pole bigint SupervisorId NOT NULL - z możliwymi wartościami NULL (zaraz po zarejestrowaniu, zlecenie pozostaje "do wzięcia") będzie referować do Worker'a (mechanika) odpowiedzialnego za nadzór nad danym zleceniem
++ Do Order dodajemy pole decimal(4,1) EstimatedTimeInDays - z możliwymi wartościami NULL.
+
++ Do Order dodajemy pole tinyint Status,
+w aplikacji serwerowej odpowiadał będzie jej typ wyliczeniowy przyjmujący następujące wartości:
+[ New: 0, InProgress: 1, Completed: 2 ]
+
++ Dodajemy tabelę TimeLog - będzie przechowywać raporty czasowe poszczególnych pracowników (data raportu, raportowany czas, id pracownika, id zlecenia)
+
+Order może mieć N TimeLog'ów, TimeLog może mieć tylko jeden Order => więc tabela Order zyskuje powiązanie 1 do N z tabelą TimeLog.
+Worker może mieć N TimeLog'ów, TimeLog może mieć tylko jednego Worker'a => więc tabela Worker zyskuje powiązanie 1 do N z tabelą TimeLog.
+Worker może być nadzorcą dla N Order'ów, jeden Order może mieć tylko jednego nadzorcę => Order 1:N Worker
+
+! W modelu danych w systemie będzie funkcjonować właściwość Order.SpentTime, której NIE będzie w bazie,
+- będzie ona oznaczać łączny czas jaki mechanicy poświęcili na Order (czas każdego z nich będzie sumowany)
+
+2. Mechanik będący "nadzorcą" zlecenia, korzystając z swojej aplikacji, uzupełnia pole EstimatedTimeInDays, wartością skonsultowaną z resztą zespołu.
+Aby mogło się to stać, zlecenie musi mieć Order.Status === 'New' (w trakcie szacowania)
+
+3. System wylicza wartość Order.SpentTime dokonując (na poziomie zapytania SQL) zsumowania wszystkich TimeLog'ów powiązanych relacyjnie z danym Order'em.
+
+4. System ma prezentować w interfejsie czas ostatniego raportu i jego autora - w liście zleceń
+(kto i kiedy ostatni raz zaraportował swój udział w wymiarze spędzonych N godzin w ramach ostatniego zlecenia).
