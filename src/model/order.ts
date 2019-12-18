@@ -1,8 +1,13 @@
 interface Order {
-  DateStart?: Date;
-  DateEnd?: Date;
-  VehicleModel?: string;
+  Id: number;
   Client?: Client;
+  SupervisorId?: number;
+  Title: string;
+  VehicleDescription?: string;
   Description?: string;
-  Title?: string;
+  DateStart: string;
+  DateEnd: string;
+  EstimatedTime?: number;
+  Status: number;
+  Archivized: number;
 }

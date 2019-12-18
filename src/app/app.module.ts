@@ -6,7 +6,6 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ClientService } from '../services/client-service';
-import { OrdersPreviewComponent } from './orders-preview/orders-preview.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrdersListComponent } from './orders/orders-list/orders-list.component';
 import { OrderDetailsComponent } from './orders/order-details/order-details.component';
@@ -17,7 +16,6 @@ import { NaviHeaderComponent } from './navi-header/navi-header.component';
 @NgModule({
   declarations: [
     AppComponent,
-    OrdersPreviewComponent,
     OrdersComponent,
     OrdersListComponent,
     OrderDetailsComponent,
