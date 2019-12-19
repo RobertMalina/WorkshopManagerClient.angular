@@ -1,6 +1,6 @@
 interface Client {
-  Id?: number;
-  PhoneNumber?: string;
-  FirstName?: string;
-  LastName?: string;
+  id?: number;
+  phoneNumber?: string;
+  firstName?: string;
+  lastName?: string;
 }

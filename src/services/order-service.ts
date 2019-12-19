@@ -19,13 +19,13 @@ export class OrderService {
     this.loading = false;
   }
 
-  getOrder(id: number): Observable<Order> {
+  getOrder(id: number): Observable<Order[]> {
     const url = `http://${this.server}:${this.port}/${this.apiRoot}/${id}`;
-    return this.httpClient.get(url);
+    return this.httpClient.get<Order[]>(url);
   }
 
-  getOrders(): Observable<Order> {
+  getOrders(): Observable<Order[]> {
     const url = `http://${this.server}:${this.port}/${this.apiRoot}`;
-    return this.httpClient.get(url);
+    return this.httpClient.get<Order[]>(url);
   }
 }

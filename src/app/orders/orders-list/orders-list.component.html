@@ -1,1 +1,7 @@
 <p>orders-list works!</p>
+<div class="row">
+  <button class="btn btn-primary" (click)="onRefreshClick()"></button>
+</div>
+<div class="orders-list">
+  <app-order-item [item]="order" *ngFor="let order of orders"></app-order-item>
+</div>

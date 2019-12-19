@@ -9,11 +9,17 @@ import { ClientService } from 'src/services/client-service';
 export class OrderRegisterFormComponent implements OnInit {
 
   order: Order = {
-    Client: {
-      Id: null,
-      PhoneNumber: null,
-      FirstName: null,
-      LastName: null
+    id: 0,
+    title: '',
+    dateStart: '',
+    dateEnd: '',
+    vehicleDescription: '',
+    status: 0,
+    client: {
+      id: null,
+      phoneNumber: null,
+      firstName: null,
+      lastName: null
     }
   };
 
@@ -28,22 +34,22 @@ export class OrderRegisterFormComponent implements OnInit {
   }
 
   validateModel(): boolean {
-    if (!this.order.Title) {
+    if (!this.order.title) {
       return false;
     }
-    if (!this.order.DateStart) {
+    if (!this.order.dateStart) {
       return false;
     }
-    if (!this.order.Client.PhoneNumber) {
+    if (!this.order.client.phoneNumber) {
       return false;
     }
-    if (!this.order.VehicleModel) {
+    if (!this.order.vehicleDescription) {
       return false;
     }
-    if (!this.order.Client.FirstName) {
+    if (!this.order.client.firstName) {
       return false;
     }
-    if (!this.order.Client.LastName) {
+    if (!this.order.client.lastName) {
       return false;
     }
 
@@ -61,12 +67,12 @@ export class OrderRegisterFormComponent implements OnInit {
         console.log(data);
         if (data.length === 0) {
           console.log(`client with phone number ${typedPhoneNumber.value} not found...`);
-          this.foundClient = { Id: null, PhoneNumber: typedPhoneNumber.value };
-          this.order.Client = this.foundClient;
+          this.foundClient = { id: null, phoneNumber: typedPhoneNumber.value };
+          this.order.client = this.foundClient;
           this.clientCheckErrorMsg = 'Nie odnaleziono';
         } else {
           this.foundClient = data[0];
-          this.order.Client = this.foundClient;
+          this.order.client = this.foundClient;
           this.clientCheckErrorMsg = '';
         }
       },
@@ -81,7 +87,7 @@ export class OrderRegisterFormComponent implements OnInit {
     if (!this.foundClient) {
       return '';
     }
-    if (this.foundClient.Id === null) {
+    if (this.foundClient.id === null) {
       return 'lightgrey';
     }
     if (this.foundClient) {
@@ -92,11 +98,17 @@ export class OrderRegisterFormComponent implements OnInit {
   clearModel(): void {
     this.isRequiredDataCollected = false;
     this.order = {
-      Client: {
-        Id: null,
-        PhoneNumber: null,
-        FirstName: null,
-        LastName: null
+      id: 0,
+      title: '',
+      dateStart: '',
+      dateEnd: '',
+      vehicleDescription: '',
+      status: 0,
+      client: {
+        id: null,
+        phoneNumber: null,
+        firstName: null,
+        lastName: null
       }
     };
   }
