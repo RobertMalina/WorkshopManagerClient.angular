@@ -1,3 +1,4 @@
+import { OrderService } from './../services/order-service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -32,7 +33,8 @@ import { NaviHeaderComponent } from './navi-header/navi-header.component';
     HttpClientModule
   ],
   providers: [
-    ClientService
+    ClientService,
+    OrderService
   ],
   bootstrap: [
     AppComponent
