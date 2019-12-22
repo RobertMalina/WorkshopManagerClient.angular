@@ -1,3 +1,22 @@
-<div>
-  <p [innerHtml]="item.title"></p>
+<div class="row">
+  <div class="col-xs-12">
+    <a href="#" class="list-group-item clearfix">
+      <div class="pull-left">
+
+      </div>
+      <span class="pull-right">
+        <p>Supervisor:
+          <span [innerHtml]="item.supervisor.firstnName"></span>
+          <span [innerHtml]="item.supervisor.lastName"></span>
+        </p>
+        <ul>
+          <li *ngFor="let mechanician in item.mechanicians">
+            {{mechanician.firstName}} {{mechanician.lastName}}
+          </li>
+        </ul>
+      </span>
+    </a>
+    <p [innerHtml]="item.title"></p>
+  </div>
+
 </div>

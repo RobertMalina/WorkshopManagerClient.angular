@@ -52,7 +52,6 @@ export class OrderRegisterFormComponent implements OnInit {
     if (!this.order.client.lastName) {
       return false;
     }
-
     return true;
   }
 

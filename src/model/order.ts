@@ -9,4 +9,6 @@ interface Order {
   dateEnd: string;
   estimatedTime?: number;
   status: number;
+  Supervisor?: Worker;
+  EngagedMechanicians: Worker[];
 }

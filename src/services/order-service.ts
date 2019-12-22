@@ -9,7 +9,6 @@ export class OrderService {
   port: number;
   server: string;
   apiRoot: string;
-
   loading: boolean;
 
   constructor(private httpClient: HttpClient) {

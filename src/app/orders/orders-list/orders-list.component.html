@@ -1,6 +1,12 @@
 <p>orders-list works!</p>
 <div class="row">
-  <button class="btn btn-primary" (click)="onRefreshClick()">Refresh</button>
+  <div class="col-sx-12">
+    <div class="pull-left">
+      <button class="btn btn-primary" (click)="onRefreshClick()">Refresh</button>
+    </div>
+    <button class="btn btn-primary pull-right">New</button>
+  </div>
+
 </div>
 <div class="orders-list">
   <app-order-item [item]="order" *ngFor="let order of orders"></app-order-item>
