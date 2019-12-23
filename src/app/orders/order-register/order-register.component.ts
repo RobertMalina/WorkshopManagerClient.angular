@@ -15,6 +15,8 @@ export class OrderRegisterFormComponent implements OnInit {
     dateEnd: '',
     vehicleDescription: '',
     status: 0,
+    engagedMechanicians: [],
+    supervisor: null,
     client: {
       id: null,
       phoneNumber: null,
@@ -102,7 +104,9 @@ export class OrderRegisterFormComponent implements OnInit {
       dateStart: '',
       dateEnd: '',
       vehicleDescription: '',
+      engagedMechanicians: [],
       status: 0,
+      supervisor: null,
       client: {
         id: null,
         phoneNumber: null,

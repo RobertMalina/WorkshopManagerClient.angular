@@ -9,5 +9,15 @@
 
 </div>
 <div class="orders-list">
-  <app-order-item [item]="order" *ngFor="let order of orders"></app-order-item>
+  <app-order-item [item]="order" *ngFor="let order of orders | paginate: {
+      id: 'orders-list',
+      itemsPerPage: ordersPerPage,
+      currentPage: page,
+      totalItems: totalOrdersCount
+    }">
+  </app-order-item>
+  <pagination-controls (pageChange)="page = $event" id="some_id" (pageChange)="onPageChange($event)"
+    (pageBoundsCorrection)="onPageChange($event)" maxSize="3" directionLinks="true" autoHide="true" responsive="true"
+    previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+    screenReaderCurrentLabel="You're on page"></pagination-controls>
 </div>

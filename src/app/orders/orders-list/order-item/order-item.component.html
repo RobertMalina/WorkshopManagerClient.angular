@@ -6,11 +6,11 @@
       </div>
       <span class="pull-right">
         <p>Supervisor:
-          <span [innerHtml]="item.supervisor.firstnName"></span>
+          <span [innerHtml]="item.supervisor.firstName"></span>
           <span [innerHtml]="item.supervisor.lastName"></span>
         </p>
         <ul>
-          <li *ngFor="let mechanician in item.mechanicians">
+          <li *ngFor="let mechanician of item.engagedMechanicians">
             {{mechanician.firstName}} {{mechanician.lastName}}
           </li>
         </ul>
@@ -18,5 +18,4 @@
     </a>
     <p [innerHtml]="item.title"></p>
   </div>
-
 </div>

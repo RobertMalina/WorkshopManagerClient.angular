@@ -13,6 +13,7 @@ import { OrderDetailsComponent } from './orders/order-details/order-details.comp
 import { OrderRemoveComponent } from './orders/order-remove/order-remove.component';
 import { OrderItemComponent } from './orders/orders-list/order-item/order-item.component';
 import { NaviHeaderComponent } from './navi-header/navi-header.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NaviHeaderComponent } from './navi-header/navi-header.component';
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [
     ClientService,
