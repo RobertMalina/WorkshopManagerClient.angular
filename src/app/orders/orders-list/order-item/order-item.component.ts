@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class OrderItemComponent implements OnInit {
 
   @Input()
-  item: Order;
+  order: Order;
 
   constructor() { }
 
