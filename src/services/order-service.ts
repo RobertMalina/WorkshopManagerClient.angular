@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class OrderService {
@@ -45,13 +45,22 @@ export class OrderService {
   }
 
   getOrders(currentPage, ordersPerPage): Observable<OrderPagedListSet> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        Authorization: 'authkey',
+        userid: '1'
+      })
+    };
     const url = `http://${this.server}:${this.port}/${this.apiRoot}/pagedListSet`;
     const body = {
       page: currentPage,
       itemsOnPage: ordersPerPage,
       archivedToo: false
     };
-    return this.httpClient.post<OrderPagedListSet>(url, body, this.httpOptions)
-      .pipe();
+    return this.httpClient.post<OrderPagedListSet>(url, body, httpOptions)
+      .pipe(
+
+      );
   }
 }
