@@ -1,5 +1,5 @@
 import { OrderService } from './../../../services/order-service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -14,11 +14,15 @@ export class OrdersListComponent implements OnInit {
   ordersPerPage: number;
   totalOrdersCount: number;
 
+  data: Observable<OrderPagedListSet> = null;
+
   constructor(private orderService: OrderService) { }
 
   ngOnInit() {
     this.page = 0;
     this.ordersPerPage = 5;
+    this.data = this.orderService.getOrders(this.page, this.ordersPerPage);
+    this.loadOrders();
   }
 
   onRefreshClick() {
@@ -30,17 +34,27 @@ export class OrdersListComponent implements OnInit {
     this.loadOrders();
   }
 
+  setPagedListData(data: OrderPagedListSet) {
+    console.log(data);
+    this.orders = data.orders;
+    this.totalOrdersCount = data.totalCount;
+    this.loadMechanicians();
+  }
+
+  onDataFetchError(error: any) {
+
+  }
+
   loadOrders() {
     this.orderService.getOrders(this.page, this.ordersPerPage)
       .subscribe(
-        (data) => {
-          console.log(data);
-          this.orders = data.orders;
-          this.totalOrdersCount = data.totalCount;
-        },
-        (error) => {
-          console.error(error);
-        });
+        (data) => this.setPagedListData(data),
+        (err) => this.onDataFetchError(err));
+  }
+
+  loadMechanicians() {
+    const ordersIds: number[] = this.orders.map(o => o.id);
+
   }
 
 }

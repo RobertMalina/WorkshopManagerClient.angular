@@ -9,7 +9,7 @@
 
 </div>
 <div class="orders-list">
-  <app-order-item [item]="order" *ngFor="let order of orders | paginate: {
+  <app-order-item [order]="order" *ngFor="let order of orders | paginate: {
       id: 'orders-list',
       itemsPerPage: ordersPerPage,
       currentPage: page,
