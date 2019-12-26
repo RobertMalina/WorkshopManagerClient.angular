@@ -20,9 +20,11 @@ export class OrderService {
     this.loading = false;
   }
 
-  httpOptions = {
+  private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Access-Control-Allow-Origin': '*',
+      Authorization: 'authkey',
+      userid: '1'
     })
   };
 
@@ -44,21 +46,34 @@ export class OrderService {
       'Something bad happened; please try again later.');
   }
 
-  getOrders(currentPage, ordersPerPage): Observable<OrderPagedListSet> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Access-Control-Allow-Origin': '*',
-        Authorization: 'authkey',
-        userid: '1'
-      })
+  getMechanicians(orderIds: number[]) {
+    const url = `http://${this.server}:${this.port}/api/workers/engagedInOrders`;
+    const body = {
+      ordersIds: orderIds
     };
+    return this.httpClient.post<Worker>(url, body,
+      {
+        headers: this.httpOptions.headers,
+        responseType: 'json'
+      })
+      .pipe(
+
+      );
+  }
+
+  getOrders(currentPage, ordersPerPage): Observable<OrderPagedListSet> {
+
     const url = `http://${this.server}:${this.port}/${this.apiRoot}/pagedListSet`;
     const body = {
       page: currentPage,
       itemsOnPage: ordersPerPage,
       archivedToo: false
     };
-    return this.httpClient.post<OrderPagedListSet>(url, body, httpOptions)
+    return this.httpClient.post<OrderPagedListSet>(url, body,
+      {
+        headers: this.httpOptions.headers,
+        responseType: 'json'
+      })
       .pipe(
 
       );
