@@ -1,28 +1,33 @@
 import { OrderService } from './../../../services/order-service';
 import { Observable, Subscription } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-orders-list',
   templateUrl: './orders-list.component.html',
   styleUrls: ['./orders-list.component.scss']
 })
-export class OrdersListComponent implements OnInit {
+export class OrdersListComponent implements OnInit, OnDestroy {
 
   orders: Order[];
   page: number;
   ordersPerPage: number;
   totalOrdersCount: number;
 
-  data: Observable<OrderPagedListSet> = null;
+  pgListDataLoad: Subscription = null;
+
+  data: any = this.orderService.getOrders(this.page, this.ordersPerPage);
 
   constructor(private orderService: OrderService) { }
 
   ngOnInit() {
     this.page = 0;
     this.ordersPerPage = 5;
-    this.data = this.orderService.getOrders(this.page, this.ordersPerPage);
     this.loadOrders();
+  }
+
+  ngOnDestroy() {
+    this.pgListDataLoad.unsubscribe();
   }
 
   onRefreshClick() {
@@ -34,22 +39,19 @@ export class OrdersListComponent implements OnInit {
     this.loadOrders();
   }
 
-  setPagedListData(data: OrderPagedListSet) {
+  private setPagedListData(data: OrderPagedListSet) {
     console.log(data);
     this.orders = data.orders;
     this.totalOrdersCount = data.totalCount;
     this.loadMechanicians();
   }
 
-  onDataFetchError(error: any) {
-
+  private onDataFetchError(error: any) {
+    console.error(error);
   }
 
   loadOrders() {
-    this.orderService.getOrders(this.page, this.ordersPerPage)
-      .subscribe(
-        (data) => this.setPagedListData(data),
-        (err) => this.onDataFetchError(err));
+
   }
 
   loadMechanicians() {
