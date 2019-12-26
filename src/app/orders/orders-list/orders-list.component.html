@@ -8,12 +8,12 @@
   </div>
 
 </div>
-<div class="orders-list">
-  <app-order-item [order]="order" *ngFor="let order of data.orders | async | paginate: {
+<div class="orders-list" *ngIf="(data | async) as data">
+  <app-order-item [order]="order" *ngFor="let order of data.orders  | paginate: {
       id: 'orders-list',
       itemsPerPage: ordersPerPage,
       currentPage: page,
-      totalItems: data.totalOrdersCount | async
+      totalItems: data.totalCount
     }">
   </app-order-item>
   <pagination-controls (pageChange)="page = $event" id="some_id" (pageChange)="onPageChange($event)"
