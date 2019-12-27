@@ -1,16 +1,13 @@
 <p class="title">Active Orders</p>
+<pagination-controls (pageChange)="onPageChange($event)">
+</pagination-controls>
 <div class="orders-list" *ngIf="(pagedListData | async) as data; else noListData">
-  <app-order-item [order]="order" *ngFor="let order of data.orders  | paginate: {
-      id: 'orders-list',
+  <app-order-item [order]="order" *ngFor="let order of data.orders | paginate: {
       itemsPerPage: ordersPerPage,
       currentPage: page,
       totalItems: data.totalCount
     }">
   </app-order-item>
-  <pagination-controls (pageChange)="page = $event" id="some_id" (pageChange)="onPageChange($event)"
-    (pageBoundsCorrection)="onPageChange($event)" maxSize="3" directionLinks="true" autoHide="true" responsive="true"
-    previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
-    screenReaderCurrentLabel="You're on page"></pagination-controls>
 </div>
 <ng-template #noListData>
   <p>There is no orders data avaible</p>

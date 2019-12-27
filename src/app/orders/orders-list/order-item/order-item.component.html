@@ -1,5 +1,5 @@
 <div class="row order-row">
-  <div class="row">
+  <div class="col-xs-12">
     <a href="#" class="list-group-order clearfix">
       <p class="title" [innerHTML]="order.title"></p>
     </a>
@@ -8,9 +8,9 @@
     <div class="pull-left">
       <p [innerHTML]="order.vehicleDescription"></p>
     </div>
-    <div class="pull-right">
+    <div class="pull-right" *ngIf="order.dateStart">
       <span>Date start: </span>
-      <span [innerHTML]="order.dateStart"></span>
+      <span [innerHTML]="order.dateStart | date:'medium'"></span>
     </div>
   </div>
   <div class="col-xs-6">

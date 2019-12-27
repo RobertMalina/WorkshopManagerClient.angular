@@ -45,7 +45,6 @@ export class OrderService {
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
     }
-    // return an observable with a user-facing error message
     return throwError(
       'Something bad happened; please try again later.');
   }
@@ -54,7 +53,7 @@ export class OrderService {
   getPagedListSet(currentPage, ordersPerPage): void {
     const url = `http://${this.server}:${this.port}/${this.apiRoot}/pagedListSet`;
     const body = {
-      page: currentPage,
+      page: currentPage - 1,
       itemsOnPage: ordersPerPage,
       archivedToo: false
     };

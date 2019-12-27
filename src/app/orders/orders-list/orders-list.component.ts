@@ -13,12 +13,10 @@ export class OrdersListComponent implements OnInit, OnDestroy {
   constructor(private orderService: OrderService) { }
 
   pagedListData: Observable<OrderPagedListSet> = null;
-  currentPage: number;
-  ordersPerPage: number;
+  page = 1;
+  ordersPerPage = 5;
 
   ngOnInit() {
-    this.currentPage = 0;
-    this.ordersPerPage = 5;
     this.pagedListData = this.orderService.PagedListSet;
     this.getData();
   }
@@ -28,15 +26,16 @@ export class OrdersListComponent implements OnInit, OnDestroy {
   }
 
   getData() {
-    this.orderService.getPagedListSet(this.currentPage, this.ordersPerPage);
+    this.orderService.getPagedListSet(this.page, this.ordersPerPage);
   }
 
   onRefreshClick() {
 
   }
 
-  onPageChange(event: any) {
-
+  onPageChange(pageNumber: number) {
+    this.page = pageNumber;
+    this.getData();
   }
 
 }
