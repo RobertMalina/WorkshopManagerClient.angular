@@ -1,4 +1,4 @@
-<p>orders-list works!</p>
+<p class="title">Active Orders</p>
 <div class="row">
   <div class="col-sx-12">
     <div class="pull-left">
@@ -8,7 +8,7 @@
   </div>
 
 </div>
-<div class="orders-list" *ngIf="(data | async) as data">
+<div class="orders-list" *ngIf="(pagedListData | async) as data; else noListData">
   <app-order-item [order]="order" *ngFor="let order of data.orders  | paginate: {
       id: 'orders-list',
       itemsPerPage: ordersPerPage,
@@ -21,3 +21,6 @@
     previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
     screenReaderCurrentLabel="You're on page"></pagination-controls>
 </div>
+<ng-template #noListData>
+  <p>There is no orders data avaible</p>
+</ng-template>

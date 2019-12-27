@@ -34,12 +34,13 @@
   border-color: darkgreen;
 }
 
-@mixin heading-settings{
-  float: left;
+@mixin heading-1 {
+  font-size: $font-big;
+  font-weight: bold;
 }
 
-@mixin heading-1 {
-  @include heading-settings;
-  font-size: 22px;
-  font-weight: bold;
+@mixin item-title {
+  font-size: $font-medium;
+  font-weight: 400;
+  color: $font-color-blue
 }

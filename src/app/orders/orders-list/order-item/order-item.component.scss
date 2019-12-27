@@ -1,0 +1,8 @@
+@import "../../../../global.scss/mixins.scss";
+
+.order-row {
+  margin: 20px 0;
+  .title{
+    @include item-title;
+  }
+}
