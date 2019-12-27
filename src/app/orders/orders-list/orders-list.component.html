@@ -1,13 +1,4 @@
 <p class="title">Active Orders</p>
-<div class="row">
-  <div class="col-sx-12">
-    <div class="pull-left">
-      <button class="btn btn-primary" (click)="onRefreshClick()">Refresh</button>
-    </div>
-    <button class="btn btn-primary pull-right">New</button>
-  </div>
-
-</div>
 <div class="orders-list" *ngIf="(pagedListData | async) as data; else noListData">
   <app-order-item [order]="order" *ngFor="let order of data.orders  | paginate: {
       id: 'orders-list',
