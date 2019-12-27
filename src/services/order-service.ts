@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, filter, tap } from 'rxjs/operators';
+import * as Rx from 'rxjs';
 
 @Injectable()
 export class OrderService {
@@ -12,6 +13,9 @@ export class OrderService {
   server: string;
   apiRoot: string;
   loading: boolean;
+
+  private pagedListSubject = new Rx.ReplaySubject<OrderPagedListSet>(1);
+  PagedListSet: Observable<OrderPagedListSet> = this.pagedListSubject.asObservable();
 
   constructor(private httpClient: HttpClient) {
     this.port = 4210; // 4110 -> port serwera proxy
@@ -46,36 +50,22 @@ export class OrderService {
       'Something bad happened; please try again later.');
   }
 
-  getMechanicians(orderIds: number[]) {
-    const url = `http://${this.server}:${this.port}/api/workers/engagedInOrders`;
-    const body = {
-      ordersIds: orderIds
-    };
-    return this.httpClient.post<Worker>(url, body,
-      {
-        headers: this.httpOptions.headers,
-        responseType: 'json'
-      })
-      .pipe(
 
-      );
-  }
-
-  getOrders(currentPage, ordersPerPage): Observable<OrderPagedListSet> {
-
+  getPagedListSet(currentPage, ordersPerPage): void {
     const url = `http://${this.server}:${this.port}/${this.apiRoot}/pagedListSet`;
     const body = {
       page: currentPage,
       itemsOnPage: ordersPerPage,
       archivedToo: false
     };
-    return this.httpClient.post<OrderPagedListSet>(url, body,
-      {
-        headers: this.httpOptions.headers,
-        responseType: 'json'
-      })
-      .pipe(
 
-      );
+    this.httpClient.post<OrderPagedListSet>(url, body, this.httpOptions)
+      .pipe(
+        tap(read => console.log(read)),
+        catchError(err => this.handleError(err))
+      )
+      .subscribe((response) => {
+        this.pagedListSubject.next(response);
+      });
   }
 }

@@ -9,53 +9,33 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class OrdersListComponent implements OnInit, OnDestroy {
 
-  orders: Order[];
-  page: number;
-  ordersPerPage: number;
-  totalOrdersCount: number;
-
-  pgListDataLoad: Subscription = null;
-
-  data: any = this.orderService.getOrders(this.page, this.ordersPerPage);
 
   constructor(private orderService: OrderService) { }
 
+  pagedListData: Observable<OrderPagedListSet> = null;
+  currentPage: number;
+  ordersPerPage: number;
+
   ngOnInit() {
-    this.page = 0;
+    this.currentPage = 0;
     this.ordersPerPage = 5;
-    this.loadOrders();
+    this.pagedListData = this.orderService.PagedListSet;
+    this.getData();
   }
 
   ngOnDestroy() {
-    this.pgListDataLoad.unsubscribe();
+
+  }
+
+  getData() {
+    this.orderService.getPagedListSet(this.currentPage, this.ordersPerPage);
   }
 
   onRefreshClick() {
-    this.loadOrders();
+
   }
 
   onPageChange(event: any) {
-    this.page = event;
-    this.loadOrders();
-  }
-
-  private setPagedListData(data: OrderPagedListSet) {
-    console.log(data);
-    this.orders = data.orders;
-    this.totalOrdersCount = data.totalCount;
-    this.loadMechanicians();
-  }
-
-  private onDataFetchError(error: any) {
-    console.error(error);
-  }
-
-  loadOrders() {
-
-  }
-
-  loadMechanicians() {
-    const ordersIds: number[] = this.orders.map(o => o.id);
 
   }
 

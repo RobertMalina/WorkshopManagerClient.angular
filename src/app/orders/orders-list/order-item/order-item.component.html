@@ -1,21 +1,31 @@
-<div class="row">
-  <div class="col-xs-12">
+<div class="row order-row">
+  <div class="row">
     <a href="#" class="list-group-order clearfix">
-      <div class="pull-left">
-        <span [innerHTML]="order.title"></span>
-      </div>
-      <span class="pull-right">
-        <p *ngIf="order.supervisor != null">Supervisor:
-          <span [innerHtml]="order.supervisor.firstName"></span>
-          <span [innerHtml]="order.supervisor.lastName"></span>
-        </p>
-        <ul>
-          <li *ngFor="let mechanician of order.engagedMechanicians">
-            {{mechanician.firstName}} {{mechanician.lastName}}
-          </li>
-        </ul>
-      </span>
+      <p class="title" [innerHTML]="order.title"></p>
     </a>
-    <p [innerHtml]="order.title"></p>
+  </div>
+  <div class="col-xs-6">
+    <div class="pull-left">
+      <p [innerHTML]="order.vehicleDescription"></p>
+    </div>
+    <div class="pull-right">
+      <span>Date start: </span>
+      <span [innerHTML]="order.dateStart"></span>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <div class="pull-right engaged-workers-tab">
+      <p *ngIf="order.supervisorId">Supervisor:
+        <span>{{ order.supervisor.firstName + ' '+ order.supervisor.lastName }}</span>
+      </p>
+      <ng-template #noSupervisor>
+        <span>Not assigned</span>
+      </ng-template>
+      <ul>
+        <li *ngFor="let mechanician of order.engagedMechanicians">
+          {{mechanician.firstName}} {{mechanician.lastName}}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
