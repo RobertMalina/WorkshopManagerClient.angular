@@ -6,7 +6,7 @@
       itemsPerPage: ordersPerPage,
       currentPage: page,
       totalItems: data.totalCount
-    }">
+    }; let i = index" [rowCssClass]="i%2==1 ? 'odd' : 'even'">
   </app-order-item>
 </div>
 <ng-template #noListData>

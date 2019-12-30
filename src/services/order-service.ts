@@ -8,7 +8,6 @@ import * as Rx from 'rxjs';
 @Injectable()
 export class OrderService {
 
-  // TODO
   port: number;
   server: string;
   apiRoot: string;
@@ -49,6 +48,28 @@ export class OrderService {
       'Something bad happened; please try again later.');
   }
 
+  getMechaniciansOfOrders(orderIds: number[]): void {
+    const url = `http://${this.server}:${this.port}/api/workers/engagedInOrders`;
+    const body = {
+      ordersIds: orderIds
+    };
+    console.log('I getMechaniciansOfOrders execute with order-ids:');
+    console.log(orderIds);
+    this.httpClient.post<MechaniciansByOrder>(url, body, this.httpOptions)
+      .pipe(
+        tap(read => console.log(read)),
+        tap(read => {
+          this.PagedListSet.pipe(tap(set => {
+            const order = set.orders.find(o => o.id === read.orderId);
+            if (order) {
+              order.engagedMechanicians = read.mechanicians;
+            }
+          })
+          );
+        }),
+        catchError(err => this.handleError(err))
+      );
+  }
 
   getPagedListSet(currentPage, ordersPerPage): void {
     const url = `http://${this.server}:${this.port}/${this.apiRoot}/pagedListSet`;
@@ -60,7 +81,10 @@ export class OrderService {
 
     this.httpClient.post<OrderPagedListSet>(url, body, this.httpOptions)
       .pipe(
-        tap(read => console.log(read)),
+        tap(read => {
+          const orderIds = read.orders.map(o => o.id);
+          this.getMechaniciansOfOrders(orderIds);
+        }),
         catchError(err => this.handleError(err))
       )
       .subscribe((response) => {

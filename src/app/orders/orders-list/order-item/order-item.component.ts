@@ -10,6 +10,9 @@ export class OrderItemComponent implements OnInit {
   @Input()
   order: Order;
 
+  @Input()
+  rowCssClass: string;
+
   constructor() { }
 
   ngOnInit() {
