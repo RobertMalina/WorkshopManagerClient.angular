@@ -4,4 +4,4 @@ This project is responsible for providing convenient interface to manage resourc
 
 ##  Diagram which represents OrderModule component tree
 
-![alt text](https://raw.githubusercontent.com/RobertMalina/WorkshopManager/master/readmeimgs/ordermodulev1.png)
+![alt text](/doc/ordermodule_v1.png)
