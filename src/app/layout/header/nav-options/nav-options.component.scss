@@ -52,7 +52,6 @@
 
 // mobile only
 @media screen and (max-width: $break-small) {
-
   .responsive-helpers{
     display: flex;
     align-items: center;
@@ -81,6 +80,7 @@
     }
     &.expanded {
       left: 0;
+      z-index: 2;
       > li {
         display: block;
         padding: 10px 20px;

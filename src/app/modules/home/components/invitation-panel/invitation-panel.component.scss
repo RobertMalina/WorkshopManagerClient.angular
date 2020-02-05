@@ -1,35 +1,57 @@
 $b: 5px; // border-width
 $panel-height: 300px;
+@import '../../../../../global.scss/variables.scss';
 
 #invitation-panel {
   position: relative;
   height: $panel-height;
   background-color: aliceblue;
   display: flex;
+
+  justify-content: space-between;
   > .img {
     border: solid 5px rgba(0, 0, 0, 0.2);
-    width: 30%;
+    width: 35%;
     height: auto;
     background: url("../../../../../assets/images/alfa-159-open-mask.webp");
     background-clip: border-box;
     background-origin: border-box;
-    background-position: 30% 50%;
+    background-position: 50%;
   }
   > #skewed-overlay {
     position: absolute;
-    top: 0;
     left: 25%;
     width: 50%;
     height: $panel-height;
     z-index: 1;
     background-color: white;
     transform: skew(20deg);
- }
+    overflow: hidden;
+    padding: 0 50px;
 
-  > #content-container {
-    width: 40%;
-    height: $panel-height;
-    z-index: 2;
-  }
+    > #content-container {
+      transform: skew(-20deg);
+      z-index: 2;
+    }
+ }
 }
 
+@media screen and (max-width: $break-small) {
+  #invitation-panel {
+    overflow-x: hidden;
+    > #skewed-overlay{
+      left: 35%;
+      width: 60%;
+      overflow: auto;
+      padding: 0 0 0 60px;
+    }
+    .img:nth-child(1){
+      display: none;
+    }
+    .img {
+      width: 50% !important;
+    }
+  }
+
+
+}
