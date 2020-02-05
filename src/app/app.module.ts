@@ -1,43 +1,33 @@
-import { OrderService } from './../services/order-service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+
+import { MainLayoutComponent } from './layout/main/main-layout.component';
+import { AuthPageLayoutComponent } from './layout/auth-page/auth-page-layout.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { NavOptionsComponent } from './layout/header/nav-options/nav-options.component';
+
+import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
-import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { ClientService } from '../services/client-service';
-import { OrdersComponent } from './orders/orders.component';
-import { OrdersListComponent } from './orders/orders-list/orders-list.component';
-import { OrderDetailsComponent } from './orders/order-details/order-details.component';
-import { OrderRemoveComponent } from './orders/order-remove/order-remove.component';
-import { OrderItemComponent } from './orders/orders-list/order-item/order-item.component';
-import { NaviHeaderComponent } from './navi-header/navi-header.component';
-import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    OrdersComponent,
-    OrdersListComponent,
-    OrderDetailsComponent,
-    OrderRemoveComponent,
-    OrderItemComponent,
-    NaviHeaderComponent
+    MainLayoutComponent,
+    AuthPageLayoutComponent,
+    NavOptionsComponent,
+    HeaderComponent,
+    AppComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    OwlDateTimeModule,
-    OwlNativeDateTimeModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    NgxPaginationModule
+    AppRoutingModule,
+    CoreModule,
+    SharedModule,
+    BrowserModule
   ],
-  providers: [
-    ClientService,
-    OrderService
-  ],
+  providers: [],
   bootstrap: [
     AppComponent
   ]

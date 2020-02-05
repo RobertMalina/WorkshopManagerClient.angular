@@ -1,0 +1,11 @@
+@import '../../../global.scss/mixins.scss';
+
+.header{
+  padding: 20px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  @include header-blue();
+  @include header-padding-10-20();
+}
+

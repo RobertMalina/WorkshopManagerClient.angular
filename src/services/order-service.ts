@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
-import { catchError, map, filter, tap } from 'rxjs/operators';
+import { catchError, map, filter, tap, mergeMap } from 'rxjs/operators';
 import * as Rx from 'rxjs';
 
 @Injectable()
@@ -15,6 +15,7 @@ export class OrderService {
 
   private pagedListSubject = new Rx.ReplaySubject<OrderPagedListSet>(1);
   PagedListSet: Observable<OrderPagedListSet> = this.pagedListSubject.asObservable();
+  orders: Observable<Order[]>;
 
   constructor(private httpClient: HttpClient) {
     this.port = 4210; // 4110 -> port serwera proxy
@@ -57,8 +58,8 @@ export class OrderService {
     console.log(orderIds);
     this.httpClient.post<MechaniciansByOrder>(url, body, this.httpOptions)
       .pipe(
-        tap(read => console.log(read)),
         tap(read => {
+          console.log(read);
           this.PagedListSet.pipe(tap(set => {
             const order = set.orders.find(o => o.id === read.orderId);
             if (order) {
@@ -79,11 +80,12 @@ export class OrderService {
       archivedToo: false
     };
 
+    const orderIds: Array<number> = [];
+
     this.httpClient.post<OrderPagedListSet>(url, body, this.httpOptions)
       .pipe(
         tap(read => {
-          const orderIds = read.orders.map(o => o.id);
-          this.getMechaniciansOfOrders(orderIds);
+          read.orders.map(o => orderIds.push(o.id));
         }),
         catchError(err => this.handleError(err))
       )

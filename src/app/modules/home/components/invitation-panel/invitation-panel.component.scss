@@ -1,0 +1,35 @@
+$b: 5px; // border-width
+$panel-height: 300px;
+
+#invitation-panel {
+  position: relative;
+  height: $panel-height;
+  background-color: aliceblue;
+  display: flex;
+  > .img {
+    border: solid 5px rgba(0, 0, 0, 0.2);
+    width: 30%;
+    height: auto;
+    background: url("../../../../../assets/images/alfa-159-open-mask.webp");
+    background-clip: border-box;
+    background-origin: border-box;
+    background-position: 30% 50%;
+  }
+  > #skewed-overlay {
+    position: absolute;
+    top: 0;
+    left: 25%;
+    width: 50%;
+    height: $panel-height;
+    z-index: 1;
+    background-color: white;
+    transform: skew(20deg);
+ }
+
+  > #content-container {
+    width: 40%;
+    height: $panel-height;
+    z-index: 2;
+  }
+}
+

@@ -1,0 +1,117 @@
+@import '../../../../global.scss/variables.scss';
+@import '../../../../global.scss/mixins.scss';
+
+@include blue-header-nav-menu();
+
+
+@include nav-menu-presets();
+
+.menu {
+  > li {
+    display: inline-block;
+    margin-right: 40px;
+  }
+  .sub-menu-container {
+    position: relative;
+    > span {
+      position: relative;
+      cursor: pointer;
+      z-index: 2;
+    }
+    > ul {
+      position: absolute;
+      top: -5px;
+      left: -10px;
+      padding: 50px 5px 5px;
+      display: none;
+      z-index: 1;
+      > li {
+        margin: 10px 20px 5px 10px;
+        white-space: nowrap;
+        fa-icon{
+          font-size: 1.2em;
+        }
+      }
+    }
+    &:hover > ul{
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+.responsive-helpers{
+  display: none;
+}
+
+// for greater screens
+@media screen and (min-width: $break-small){
+  .menu {
+    @include conform-to-nav-h40();  // -> centers inline options vertically
+  }
+}
+
+// mobile only
+@media screen and (max-width: $break-small) {
+
+  .responsive-helpers{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 20px;
+    >.responsive-menu-shortcut{
+      display: block;
+      @include bars-menu();
+    }
+    > span:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+  .menu {
+    position: absolute;
+    top: 60px;
+    width:100%;
+    > li {
+      display: none;
+      margin-right: 0;
+    }
+    &:not(.expanded){
+      margin: 0;
+      padding: 0;
+      width: 0;
+    }
+    &.expanded {
+      left: 0;
+      > li {
+        display: block;
+        padding: 10px 20px;
+      }
+      .sub-menu-container {
+        position: relative;
+        padding: 10px 0 10px 20px;
+        &:hover{
+          padding-bottom: 0;
+        }
+        > ul {
+          display: none;
+          position: relative;
+          padding: 5px 0 5px 20px;
+          > li {
+            padding: 10px 20px;
+            margin: 0;
+          }
+        }
+        > span {
+          margin: 0 10px 0 0;
+          display: inline-block;
+        }
+        &:hover > ul{
+          display: block;
+          > span {
+            margin-bottom: 10px;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}

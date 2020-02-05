@@ -1,46 +1,93 @@
 @import './variables.scss';
 
-@mixin tabs-upper-panel {
-  margin: 20px 0;
-  text-align: center;
-  width: 100%;
-  float: left;
+@mixin header-blue {
+  background-color: $blue;
+  color: $white
+}
+@mixin blue-header-nav-menu {
+  .menu {
+    fa-icon {
+      font-size: 1.2em;
+      margin: 0 4px;
+    }
+    li, a {
+      color: $white;
+    }
+    li.selected {
+      font-weight: bold;
+    }
+    .sub-menu-container {
+      > ul {
+        background-color: $light-blue;
+      }
+    }
+  }
+
+  @media screen and (max-width: $break-small) {
+    .menu {
+        background-color: $light-blue;
+        li:not(:last-of-type){
+          border-bottom: solid 1px $blue;
+        }
+        .sub-menu-container {
+          > ul {
+            background-color: initial;
+          }
+        }
+    }
+  }
 }
 
-@mixin text-area {
-  display: block;
-  width: 100%;
-  min-height: 80px;
-  padding: 10px;
+@mixin bars-menu {
+  cursor: pointer;
+  font-size: 30px;
+  cursor: pointer;
+  height: 30px;
+  line-height: 30px;
 }
 
-@mixin alert-text {
-  font-weight: 400;
-  font-size: 16px;
-}
-@mixin alert-box {
-  box-sizing: border-box;
-  padding: 20px;
-  border: solid 1px;
-}
-
-@mixin alert-box-warn {
-  background-color: yellow;
-  border-color: red;
+@mixin header-logo-h40 {
+  #logo, .logo{
+    height: 40px;
+    width: 200px;
+    line-height: 40px;
+    padding: 0 10px;
+  }
 }
 
-@mixin alert-box-success {
-  background-color: lightgreen;
-  border-color: darkgreen;
+@mixin header-padding-10-20 {
+  padding: 10px 20px;
+  @include header-logo-h40();
+  nav{
+    display: table;
+  }
 }
 
-@mixin heading-1 {
-  font-size: $font-big;
-  font-weight: bold;
+@mixin hrefs-design {
+  a {
+    &:hover{
+      text-decoration: none;
+    }
+    &.active { //--> klasa nadawana przez mechanizm ng: routerLinkActive
+      font-weight: bold;
+      color: $white-distinct;
+    }
+  }
 }
 
-@mixin item-title {
-  font-size: $font-medium;
-  font-weight: 400;
-  color: $font-color-blue
+@mixin nav-menu-presets {
+  .menu{
+    list-style: none;
+    padding-inline-start: 0;
+    ul {
+      list-style: none;
+    }
+    @include hrefs-design();
+  }
+}
+
+@mixin conform-to-nav-h40 {
+  display: table-cell;
+  vertical-align: middle;
+  height: 40px;
 }
