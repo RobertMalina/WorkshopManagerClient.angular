@@ -9,7 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {
@@ -22,18 +22,18 @@ const routes: Routes = [
       //     import('./modules/home/home.module').then(m => m.HomeModule)
       // },
       {
-        path: 'dashboard',
+        path: 'home',
         loadChildren: './modules/home/home.module#HomeModule'
       }
     ]
   },
 
-  { path: '**', redirectTo: '/dashboard', pathMatch: 'full' }
+  { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { useHash: true, enableTracing: true })
+    RouterModule.forRoot(routes, { useHash: true, enableTracing: false })
   ],
   exports: [
     RouterModule

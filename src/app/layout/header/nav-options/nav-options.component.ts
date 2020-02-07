@@ -1,5 +1,5 @@
-import { AppSectionOption } from './../app-section-option';
-import { Component, OnInit, Input, ElementRef, AfterViewInit, Directive } from '@angular/core';
+import { AppSectionOption } from './../../../core/models/app-section-option';
+import { Component, OnInit, Input } from '@angular/core';
 import { faCaretDown, faBars, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -19,15 +19,15 @@ import { faCaretDown, faBars, faChevronUp } from '@fortawesome/free-solid-svg-ic
   <ul [ngClass]="responsiveMenuExpanded ? 'responsive expanded' : ''" class="menu">
     <ng-template #recursiveList let-options>
       <li *ngFor="let option of options"
-        [ngClass]="option.childs.length > 0 ? 'sub-menu-container':''"
+        [ngClass]="option.childs !== undefined ? 'sub-menu-container':''"
         [attr.title] ="option.title"
         #liElement
         (click)="onOptionClick(liElement.getAttribute('title'))">
         <ng-container
-          [ngTemplateOutlet]="option.childs.length > 0 ? withChilds : single"
+          [ngTemplateOutlet]="option.childs !== undefined ? withChilds : single"
           [ngTemplateOutletContext]="{option:option}">
         </ng-container>
-        <ul *ngIf="option.childs.length > 0">
+        <ul *ngIf="option.childs !== undefined">
           <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: option.childs }"></ng-container>
         </ul>
       </li>
@@ -46,7 +46,7 @@ import { faCaretDown, faBars, faChevronUp } from '@fortawesome/free-solid-svg-ic
   `,
   styleUrls: ['./nav-options.component.scss']
 })
-export class NavOptionsComponent implements OnInit, AfterViewInit {
+export class NavOptionsComponent implements OnInit {
 
   @Input() options: AppSectionOption;
 
@@ -57,16 +57,13 @@ export class NavOptionsComponent implements OnInit, AfterViewInit {
   responsiveMenuExpanded: boolean;
   selectedOptionName = 'Home';
 
-  constructor(private componentRoot: ElementRef) { }
+  constructor() { }
 
   onOptionClick(title: string) {
     console.log(title);
   }
 
   ngOnInit(): void {
+  }
 
-  }
-  ngAfterViewInit() {
-    this.renderedOptions = this.componentRoot.nativeElement.querySelectorAll('.classImLookingFor');
-  }
 }

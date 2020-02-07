@@ -1,3 +1,4 @@
+import { OptionsAuthFilterPipe } from './pipes/options-auth-filter.pipe';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -9,6 +10,7 @@ import { library as fontAwsItems } from '@fortawesome/fontawesome-svg-core';
 
 @NgModule({
   declarations: [
+    OptionsAuthFilterPipe
   ],
   imports: [
     OwlDateTimeModule,
@@ -27,7 +29,8 @@ import { library as fontAwsItems } from '@fortawesome/fontawesome-svg-core';
     FormsModule,
     CommonModule,
     FontAwesomeModule,
-    RouterModule
+    RouterModule,
+    OptionsAuthFilterPipe
   ]
 })
 

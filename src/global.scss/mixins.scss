@@ -91,3 +91,17 @@
   vertical-align: middle;
   height: 40px;
 }
+
+
+@mixin adjust-z-indexes-up-to-invitation-panel {
+  .menu {
+    .sub-menu-container {
+      > span {
+        z-index: 3;
+      }
+      > ul {
+        z-index: 2;
+      }
+    }
+  }
+}

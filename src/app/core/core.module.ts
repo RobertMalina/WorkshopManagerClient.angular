@@ -13,6 +13,8 @@ import { throwIfAlreadyLoaded } from './guards/module-import.guard';
   ],
   providers: [
     AuthorizationGuard
+  ],
+  exports: [
   ]
 })
 
