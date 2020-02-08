@@ -19,15 +19,15 @@ import { faCaretDown, faBars, faChevronUp } from '@fortawesome/free-solid-svg-ic
   <ul [ngClass]="responsiveMenuExpanded ? 'responsive expanded' : ''" class="menu">
     <ng-template #recursiveList let-options>
       <li *ngFor="let option of options"
-        [ngClass]="option.childs !== undefined ? 'sub-menu-container':''"
+        [ngClass]="option.childs ? 'sub-menu-container':''"
         [attr.title] ="option.title"
         #liElement
         (click)="onOptionClick(liElement.getAttribute('title'))">
         <ng-container
-          [ngTemplateOutlet]="option.childs !== undefined ? withChilds : single"
+          [ngTemplateOutlet]="option.childs ? withChilds : single"
           [ngTemplateOutletContext]="{option:option}">
         </ng-container>
-        <ul *ngIf="option.childs !== undefined">
+        <ul *ngIf="option.childs">
           <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: option.childs }"></ng-container>
         </ul>
       </li>

@@ -18,8 +18,15 @@ export class NavOptionsService {
 
   constructor(private authService: AuthService, private rolesService: RolesService) {
     this.avaibleOptions = new Subject<AppSectionOption[]>();
-    const roles = rolesService.getRolesContract();
 
+    this.authService.loggedUser.subscribe(user => {
+      this.initializeDefinitions();
+      this.adjustAvaibleOptionsFor(user);
+    });
+  }
+
+  initializeDefinitions() {
+    const roles = this.rolesService.getRolesContract();
     this.definitions = [
       { link: '/auth/register', title: 'Register', roles: roles.anonymous },
       { link: '/auth/login', title: 'Log-in', roles: roles.anonymous },
@@ -32,9 +39,9 @@ export class NavOptionsService {
         ]
       },
       {
-        link: '/orders', title: 'Orders', roles: roles.supervisor,
+        link: '/orders', title: 'Orders', roles: roles.regular,
         childs: [
-          { link: '/orders/preview', title: 'Preview', roles: roles.supervisor },
+          { link: '/orders/preview', title: 'Preview', roles: roles.regular },
           { link: '/orders/register', title: 'Register', roles: roles.supervisor }
         ]
       },
@@ -46,19 +53,16 @@ export class NavOptionsService {
       },
       { link: '/raports', title: 'Log Raport', roles: roles.mechanician }
     ];
-
-    this.authService.loggedUser.subscribe(user => {
-      this.adjustAvaibleOptionsFor(user);
-    });
   }
 
   authFilter(options: AppSectionOption[], userRoles: AppRole[]): AppSectionOption[] {
-    let newChilds: AppSectionOption[];
     return options.filter(
       option => {
         if (option.childs) {
-          newChilds = this.authFilter(option.childs, userRoles);
-          option.childs = newChilds.length > 0 ? newChilds : null;
+          option.childs = this.authFilter(option.childs, userRoles);
+          if (option.childs.length === 0) {
+            option.childs = null;
+          }
         }
         if (option.roles) {
           return matchRoles(userRoles, option.roles);

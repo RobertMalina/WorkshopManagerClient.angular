@@ -17,9 +17,11 @@ export class AuthService {
   constructor(private rolesService: RolesService) {
     this.loggedUser = new Subject<AppUser>();
     this.appRoles = rolesService.getRolesContract();
+
     setTimeout(() => {
       this.setAnonymousUser();
     }, 1000);
+
     this.userSwitchTest();
   }
 
