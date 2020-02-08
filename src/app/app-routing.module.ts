@@ -27,6 +27,20 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'auth',
+    component: AuthPageLayoutComponent,
+    children: [
+      {
+        path: 'login',
+        loadChildren: './modules/auth/auth-page.module#AuthPageModule'
+      },
+      {
+        path: 'register',
+        loadChildren: './modules/auth/auth-page.module#AuthPageModule'
+      }
+    ]
+  },
 
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];

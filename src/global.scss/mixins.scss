@@ -105,3 +105,41 @@
     }
   }
 }
+
+// login panel
+@mixin login-panel-sizing {
+  width: 400px;
+  min-height: 300px;
+  // mobile only
+  @media screen and (max-width: $break-small) {
+    width: 300px;
+    height: auto;
+  }
+}
+
+@mixin input-group {
+  margin: 0 auto;
+  width: 100%;
+  > p {
+    margin: 0;
+    padding: 0;
+    color: $white;
+  }
+  &:not(:last-of-type){
+    margin: 20px 0;
+  }
+  &.bottom {
+    padding: 20px 0;
+  }
+  > input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 2px;
+    margin-top: 5px;
+    &:focus {
+      outline: none;
+      border-bottom: solid 2px $light-blue;
+    }
+  }
+}

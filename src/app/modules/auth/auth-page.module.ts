@@ -1,3 +1,4 @@
+import { AuthPageRoutingModule } from './auth-page.routing';
 import { AppLoginComponent } from './../auth/pages/login/login.component';
 import { NgModule } from '@angular/core';
 
@@ -6,6 +7,7 @@ import { NgModule } from '@angular/core';
     AppLoginComponent
   ],
   imports: [
+    AuthPageRoutingModule
   ],
   providers: [
 
