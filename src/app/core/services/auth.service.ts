@@ -21,35 +21,6 @@ export class AuthService {
     setTimeout(() => {
       this.setAnonymousUser();
     }, 1000);
-
-    this.userSwitchTest();
-  }
-
-  userSwitchTest() {
-    // var array_name[:data type] = [val1,val2…valn]
-    const s = new AppUser('supervisor01', 'some-token');
-    s.setRoles(this.appRoles.supervisor);
-    const r = new AppUser('regular01', 'some-token');
-    r.setRoles(this.appRoles.regular);
-    const m = new AppUser('mechanician01', 'some-token');
-    m.setRoles(this.appRoles.mechanician);
-    const a = new AppUser('anonymous_visitor', 'token-null');
-    a.setRoles(this.appRoles.anonymous);
-
-    const users: AppUser[] = [s, r, m, a];
-
-    const usersLen = users.length;
-    let index = 0;
-
-    interval(20000).subscribe(() => {
-      if (index === usersLen - 1) {
-        index = 0;
-      }
-      this.switchUser(users[index]);
-      console.log(users[index]);
-      index++;
-    });
-
   }
 
   switchUser(user: AppUser): AppUser {
