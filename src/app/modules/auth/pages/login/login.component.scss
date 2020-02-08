@@ -15,10 +15,7 @@
     @include input-group();
   }
   button {
-    background-color: $light-blue;
-    border: none;
-    padding: 5px 25px;
-    border-radius: 5px;
+    @include form-button();
   }
 }
 
