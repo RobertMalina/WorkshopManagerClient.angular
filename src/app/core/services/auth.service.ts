@@ -52,7 +52,7 @@ export class AuthService {
   }
 
   login(username: string, password: string): Observable<AppUser> {
-    return this.httpClient.post<AppUser>(`${config.apiUrl}/auth/login`,
+    return this.httpClient.post<AppUser>(`${config.getApiUrl()}/auth/login`,
       { Username: username, Password: password })
       .pipe(
         map(user => {
