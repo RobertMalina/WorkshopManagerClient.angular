@@ -1,3 +1,5 @@
+import { UnauthorizedRequestErrorInterceptor } from './interceptors/unauth-request.interceptor';
+import { JWTAttachInterceptor } from './interceptors/jwt-token-attach.interceptor';
 import { RouterModule } from '@angular/router';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { NgModule, SkipSelf, Optional } from '@angular/core';
@@ -15,9 +17,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
   ],
   providers: [
     AuthorizationGuard,
-    // TODO
-    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JWTAttachInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: UnauthorizedRequestErrorInterceptor, multi: true },
   ],
   exports: [
   ]
