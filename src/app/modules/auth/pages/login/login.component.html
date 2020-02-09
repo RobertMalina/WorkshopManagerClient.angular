@@ -1,14 +1,28 @@
 <div class="login-panel">
   <h2>Login</h2>
-  <div class="input-group">
-    <p class="input-label">Username / Email</p>
-    <input id="username" type="text" />
-  </div>
-  <div class="input-group">
-    <p class="input-label">Password</p>
-    <input id="password" type="password" />
-  </div>
-  <div class="input-group bottom">
-    <button id="submit">Submit</button>
-  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="input-group">
+      <p class="input-label">Username / Email</p>
+      <input formControlName="username" [ngClass]="{ 'invalid': formSubmitted && fc.username.errors }" type="text" />
+      <div *ngIf="formSubmitted && fc.username.errors" class="invalid-feedback">
+        <div *ngIf="fc.username.errors.required">Username is required</div>
+      </div>
+    </div>
+    <div class="input-group">
+      <p class="input-label">Password</p>
+      <input formControlName="password" [ngClass]="{ 'invalid': formSubmitted && fc.password.errors }"
+        type="password" />
+      <div *ngIf="formSubmitted && fc.password.errors" class="invalid-feedback">
+        <div *ngIf="fc.password.errors.required">You forget about password...</div>
+      </div>
+    </div>
+    <div class="input-group bottom">
+      <button id="submit">Submit</button>
+    </div>
+    <div *ngIf="error" class="alert alert-danger">
+      <fa-icon [icon]="faExclamationTriangleIcon"></fa-icon>
+      {{error | serverErrorDisplay}}
+    </div>
+    <app-loading-icon *ngIf="wait" locationClass="corner-top-right"></app-loading-icon>
+  </form>
 </div>

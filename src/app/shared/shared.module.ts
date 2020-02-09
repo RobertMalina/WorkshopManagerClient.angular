@@ -1,6 +1,7 @@
-import { OptionsAuthFilterPipe } from './pipes/options-auth-filter.pipe';
+import { ServerErrorDisplayPipe } from './pipes/server-error-display.pipe';
+import { LoadingIconComponent } from './components/loading-icon.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { HttpClientModule } from '@angular/common/http';
@@ -10,7 +11,7 @@ import { library as fontAwsItems } from '@fortawesome/fontawesome-svg-core';
 
 @NgModule({
   declarations: [
-    OptionsAuthFilterPipe
+    ServerErrorDisplayPipe
   ],
   imports: [
     OwlDateTimeModule,
@@ -19,7 +20,9 @@ import { library as fontAwsItems } from '@fortawesome/fontawesome-svg-core';
     FormsModule,
     CommonModule,
     FontAwesomeModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   exports: [
@@ -30,7 +33,9 @@ import { library as fontAwsItems } from '@fortawesome/fontawesome-svg-core';
     CommonModule,
     FontAwesomeModule,
     RouterModule,
-    OptionsAuthFilterPipe
+    ServerErrorDisplayPipe,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 

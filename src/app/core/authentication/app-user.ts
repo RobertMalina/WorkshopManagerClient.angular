@@ -4,7 +4,11 @@ export class AppUser {
 
   roles: AppRole[];
 
-  constructor(public username: string, public token: string) { }
+  constructor(public username: string, public token: string, roles?: AppRole[]) {
+    if (roles) {
+      this.setRoles(roles);
+    }
+  }
 
   setRoles(roles: AppRole[]) {
     this.roles = roles;

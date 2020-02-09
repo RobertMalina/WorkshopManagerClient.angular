@@ -1,5 +1,4 @@
 import { NavOptionsService } from './../../core/services/nav-options.service';
-import { OptionsAuthFilterPipe } from './../../shared/pipes/options-auth-filter.pipe';
 import { AuthService } from './../../core/services/auth.service';
 import { AppSectionOption } from './../../core/models/app-section-option';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +10,7 @@ import { AppRole } from 'src/app/core/authentication/app-role';
   <header class="header">
   <div id="logo">LOGO</div>
   <nav>
-    <app-nav-options [options]="options | optionsAuthFilter"></app-nav-options>
+    <app-nav-options [options]="options"></app-nav-options>
   </nav>
   </header>
 `,
@@ -19,7 +18,7 @@ import { AppRole } from 'src/app/core/authentication/app-role';
 })
 export class HeaderComponent implements OnInit {
 
-  private options: AppSectionOption[];
+  options: AppSectionOption[];
 
   constructor(private optionsService: NavOptionsService) { }
 

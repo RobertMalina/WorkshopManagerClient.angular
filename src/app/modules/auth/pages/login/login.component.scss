@@ -11,13 +11,16 @@
   background-color: rgba(0,0,0,0.75);
   padding: 20px 40px;
   border-radius: 10px;
-  > .input-group {
-    @include input-group();
+  @include app-form();
+  input {
+    line-height: 25px;
   }
-  button {
-    @include form-button();
+  > form {
+    > .alert-danger{
+      color: $red-distinct !important;
+      background-color: transparent !important;
+      border-color: $red-indistinct !important;
+    }
   }
+
 }
-
-
-

@@ -1,6 +1,6 @@
 import { AppUser } from './../authentication/app-user';
 import { AuthService } from './auth.service';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, ReplaySubject } from 'rxjs';
 import { AppRole } from './../authentication/app-role';
 import { AppSectionOption } from './../models/app-section-option';
 import { Injectable } from '@angular/core';
@@ -14,10 +14,10 @@ export class NavOptionsService {
 
   private definitions: AppSectionOption[];
 
-  avaibleOptions: Subject<AppSectionOption[]>;
+  avaibleOptions: ReplaySubject<AppSectionOption[]>;
 
   constructor(private authService: AuthService, private rolesService: RolesService) {
-    this.avaibleOptions = new Subject<AppSectionOption[]>();
+    this.avaibleOptions = new ReplaySubject<AppSectionOption[]>(1);
 
     this.authService.loggedUser.subscribe(user => {
       this.initializeDefinitions();
@@ -25,7 +25,7 @@ export class NavOptionsService {
     });
   }
 
-  initializeDefinitions() {
+  private initializeDefinitions() {
     const roles = this.rolesService.getRolesContract();
     this.definitions = [
       { link: '/auth/register', title: 'Register', roles: roles.anonymous },
@@ -76,7 +76,6 @@ export class NavOptionsService {
   adjustAvaibleOptionsFor(user: AppUser): void {
     const userRoles = user.roles;
     const options = this.authFilter(this.definitions, userRoles);
-    console.log(options);
     this.avaibleOptions.next(options);
   }
 }

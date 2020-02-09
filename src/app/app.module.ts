@@ -1,3 +1,4 @@
+import { LoadingIconComponent } from './shared/components/loading-icon.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
