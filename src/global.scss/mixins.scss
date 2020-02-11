@@ -189,11 +189,10 @@
         backface-visibility: hidden;
       }
       .back {
-        background: #23262d;
         // color: #FFF;
         transform: rotateY(180deg);
       }
-      &.reversed{
+      &.reversed {
         transform: rotateY(180deg);
       }
     }

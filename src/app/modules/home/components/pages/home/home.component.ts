@@ -18,7 +18,9 @@ export class HomeComponent implements OnInit {
     this.masonryOptions = {
       transitionDuration: '0.8s',
       fitWidth: true,
-      columnWidth: 400
+      columnWidth: 400,
+      itemSelector: '.feature-masonry-item',
+      gutter: 10
     };
   }
 

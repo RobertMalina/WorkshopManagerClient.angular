@@ -13,12 +13,18 @@
       font-weight: 800;
     }
   }
-}
 
-#features-cards-container{
-  padding: 0 40px;
-  > .masonry-grid {
-    margin: 0px auto;
+  > #features-cards-container{
+    padding: 20px 40px;
+    > .masonry-grid {
+      margin: 0px auto;
+
+      > .feature-masonry-item {
+        margin-bottom: 10px;
+      }
+    }
   }
 }
+
+
 

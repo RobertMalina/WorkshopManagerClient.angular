@@ -12,19 +12,23 @@ $card-max-width: 400px;
 .feature-card-container {
   max-width: $card-max-width;
   overflow: hidden;
+  border-radius: 5px;
 }
 
 .feature-card {
+  color: $white-indistinct;
+  background-color: $light-black;
   .feature-card-side {
-    padding: 5px 10px;
+    padding: 5px 10px 20px;
     .main-title {
-      font-weight: 600;
+      color: $white;
+      font-weight: 500;
     }
     .subtitle {
       font-weight: 400;
     }
     .description {
-
+      padding: 10px 2px;
     }
     img {
       // 5:3 proportion (width:height)
@@ -35,6 +39,15 @@ $card-max-width: 400px;
       height: $img-height;
       margin: 0 auto;
       display: block;
+    }
+    > .card-controls{
+      display: flex;
+      justify-content: space-between;
+      button {
+        @include app-button();
+        padding: 5px 35px;
+        color: $white;
+      }
     }
   }
 }

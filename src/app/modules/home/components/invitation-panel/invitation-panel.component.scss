@@ -6,7 +6,6 @@ $panel-height: 300px;
   position: relative;
   top: $header-height;
   height: $panel-height;
-  background-color: aliceblue;
   display: flex;
 
   justify-content: space-between;
@@ -28,22 +27,30 @@ $panel-height: 300px;
     background-color: white;
     transform: skew(20deg);
     overflow: hidden;
-    padding: 0 50px;
+    padding: 0 10vw;
+
 
     > #content-container {
+      > h2 {
+        font-weight: 700;
+      }
+      line-height: 25px;
+      font-size: 16px;
+      font-weight: 600;
+
       transform: skew(-20deg);
       z-index: 2;
     }
  }
 }
 
-@media screen and (max-width: $break-small) {
+//@media screen and (max-width: $break-small) {
+@media screen and (max-width: 650px) {
   #invitation-panel {
     overflow-x: hidden;
     > #skewed-overlay{
       left: 35%;
-      width: 60%;
-      overflow: auto;
+      width: auto;
       padding: 0 0 0 60px;
     }
     .img:nth-child(1){
@@ -53,6 +60,4 @@ $panel-height: 300px;
       width: 50% !important;
     }
   }
-
-
 }

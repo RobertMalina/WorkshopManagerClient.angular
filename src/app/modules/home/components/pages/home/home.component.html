@@ -6,7 +6,7 @@
   <div id="features-cards-container">
     <ngx-masonry class="masonry-grid" [useImagesLoaded]="true" [options]="masonryOptions">
 
-      <ngxMasonryItem class="masonry-item" *ngFor="let feature of featuresData.systemFeatures">
+      <ngxMasonryItem class="feature-masonry-item" *ngFor="let feature of featuresData.systemFeatures">
         <app-feature-item [feature]="feature"></app-feature-item>
       </ngxMasonryItem>
 

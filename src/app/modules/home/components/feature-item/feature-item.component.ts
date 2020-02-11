@@ -5,7 +5,7 @@ import { FeatureInfoDetails } from 'src/app/core/models/feature-info-details';
   selector: 'app-feature-item',
   template: `
   <div class="feature-card-container">
-    <div class="feature-card reversible" [ngClass]="{'reversed':reversed}">
+    <div class="feature-card reversible" [ngClass]="reversed ? 'reversed' : ''">
       <div class="feature-card-side front">
         <h3 class="main-title" [innerHTML]="feature.title"></h3>
         <h4 class="subtitle" *ngIf="feature.subtitle"> {{ feature.subtitle }} </h4>
