@@ -1,1 +1,15 @@
 <app-invitation-panel></app-invitation-panel>
+<div id="home-content">
+  <div class="title-container">
+    <h2>{{ title }}</h2>
+  </div>
+  <div id="features-cards-container">
+    <ngx-masonry class="masonry-grid" [useImagesLoaded]="true" [options]="masonryOptions">
+
+      <ngxMasonryItem class="masonry-item" *ngFor="let feature of featuresData.systemFeatures">
+        <app-feature-item [feature]="feature"></app-feature-item>
+      </ngxMasonryItem>
+
+    </ngx-masonry>
+  </div>
+</div>

@@ -1,5 +1,5 @@
+import { LimitedTextDisplayPipe } from './pipes/limited-text-display.pipe';
 import { ServerErrorDisplayPipe } from './pipes/server-error-display.pipe';
-import { LoadingIconComponent } from './components/loading-icon.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -7,11 +7,14 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgxMasonryModule } from 'ngx-masonry';
 import { library as fontAwsItems } from '@fortawesome/fontawesome-svg-core';
+
 
 @NgModule({
   declarations: [
-    ServerErrorDisplayPipe
+    ServerErrorDisplayPipe,
+    LimitedTextDisplayPipe
   ],
   imports: [
     OwlDateTimeModule,
@@ -34,8 +37,10 @@ import { library as fontAwsItems } from '@fortawesome/fontawesome-svg-core';
     FontAwesomeModule,
     RouterModule,
     ServerErrorDisplayPipe,
+    LimitedTextDisplayPipe,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMasonryModule
   ]
 })
 

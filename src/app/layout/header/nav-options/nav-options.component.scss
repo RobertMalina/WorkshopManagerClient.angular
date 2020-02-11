@@ -6,6 +6,8 @@
 
 @include nav-menu-presets();
 
+
+
 .menu {
   > li {
     display: inline-block;
@@ -16,7 +18,7 @@
     > span {
       position: relative;
       cursor: pointer;
-      z-index: 2;
+      z-index: calc( 2 + #{$header-z-index});
     }
     > ul {
       position: absolute;
@@ -24,7 +26,7 @@
       left: -10px;
       padding: 50px 5px 5px;
       display: none;
-      z-index: 1;
+      z-index: calc( 1 + #{$header-z-index});
       > li {
         margin: 10px 20px 5px 10px;
         white-space: nowrap;
@@ -80,7 +82,7 @@
     }
     &.expanded {
       left: 0;
-      z-index: 2;
+      z-index: calc( 2 + #{$header-z-index});
       > li {
         display: block;
         padding: 10px 20px;

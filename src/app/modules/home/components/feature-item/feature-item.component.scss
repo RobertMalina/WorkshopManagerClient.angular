@@ -1,0 +1,40 @@
+@import '../../../../../global.scss/variables.scss';
+@import '../../../../../global.scss/mixins.scss';
+
+@include createReversibleCard(
+  'feature-card-container',
+  'feature-card',
+  'feature-card-side'
+);
+
+$card-max-width: 400px;
+
+.feature-card-container {
+  max-width: $card-max-width;
+  overflow: hidden;
+}
+
+.feature-card {
+  .feature-card-side {
+    padding: 5px 10px;
+    .main-title {
+      font-weight: 600;
+    }
+    .subtitle {
+      font-weight: 400;
+    }
+    .description {
+
+    }
+    img {
+      // 5:3 proportion (width:height)
+      $img-width: calc( #{$card-max-width} * 0.95);
+      $img-height: calc( ( #{$img-width} * 3 ) / 5 );
+
+      width: $img-width;
+      height: $img-height;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+}

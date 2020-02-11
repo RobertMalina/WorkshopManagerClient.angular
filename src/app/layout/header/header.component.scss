@@ -1,10 +1,14 @@
 @import '../../../global.scss/mixins.scss';
+@import '../../../global.scss/variables.scss';
 
 .header{
   padding: 20px;
   display: flex;
   width: 100%;
+  height: $header-height;
   justify-content: space-between;
+  position: fixed;
+  z-index: $header-z-index;
   @include header-blue();
   @include header-padding-10-20();
 }

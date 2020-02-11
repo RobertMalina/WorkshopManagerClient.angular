@@ -4,6 +4,7 @@ $panel-height: 300px;
 
 #invitation-panel {
   position: relative;
+  top: $header-height;
   height: $panel-height;
   background-color: aliceblue;
   display: flex;

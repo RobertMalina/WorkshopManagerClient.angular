@@ -1,3 +1,4 @@
+import { FeatureItemComponent } from './components/feature-item/feature-item.component';
 import { InvitationPanelComponent } from './components/invitation-panel/invitation-panel.component';
 import { SharedModule } from './../../shared/shared.module';
 import { HomeComponent } from './components/pages/home/home.component';
@@ -8,6 +9,7 @@ import { HomeRoutingModule } from './home.routing';
   declarations: [
     HomeComponent,
     InvitationPanelComponent,
+    FeatureItemComponent
   ],
   imports: [
     SharedModule,

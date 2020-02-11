@@ -1,0 +1,24 @@
+@import '../../../../../../global.scss/variables.scss';
+
+#home-content {
+  position: relative;
+  top: $header-height;
+
+  > .title-container{
+    padding: 20px 40px;
+    letter-spacing: 1px;
+    background-color: rgba(50, 100, 255, 0.95);
+    color: aliceblue;
+    > h2 {
+      font-weight: 800;
+    }
+  }
+}
+
+#features-cards-container{
+  padding: 0 40px;
+  > .masonry-grid {
+    margin: 0px auto;
+  }
+}
+

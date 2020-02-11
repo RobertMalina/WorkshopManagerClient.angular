@@ -1,0 +1,37 @@
+{
+  "title": "System features",
+  "systemFeatures": [
+    {
+      "id": 1,
+      "title": "Orders manager",
+      "path": "/orders",
+      "subtitle": "Repairments registration & supervision",
+      "imgSrc": "/assets/images/alfa-159-sisters-thumbnail.webp",
+      "description": "This feature allows to registration of new repair orders. Then, system-registered order can be managed and monitored via convenient user interface.\nYou can not only preview important data related to order but also supervise how much time your workers already spent on it - due to Log Report feature, which is being used by workers."
+    },
+    {
+      "id": 2,
+      "title": "Workers supervisor",
+      "path": "/workers",
+      "subtitle": "Registration & maintenance & order's assignement",
+      "imgSrc": "/assets/images/workers-supervisor-thumbnail.webp",
+      "description": "When the repair order is registered, this feature allows You to manage it by appointing the idle workers (or not) to it. \nMoreover, here you can monitor & manage data of workshop's workers, including registration of the new workers too."
+    },
+    {
+      "id": 3,
+      "title": "Log reporter",
+      "path": "/logs",
+      "subtitle": "Logging worktime spent on order",
+      "imgSrc": "/assets/images/log-reporter-thumbnail.webp",
+      "description": "Feature purposed to mechanicians whose are engaged in particullar order. Interface is written mobile first, so every mechanician can use it conveniently on his mobile phone.\nRegistered order need to be estimated by appointed supervisor, then executive mechanicians are going to be assigned to it. In aim to system work properly every assigned mechanician have to report time logs - data about how much time did he spent on particullar order."
+    },
+    {
+      "id": 4,
+      "title": "Parts keeper",
+      "path": "/parts",
+      "subtitle": "Parts informations evidence & ",
+      "imgSrc": "/assets/images/parts-keeper-thumbnail.webp",
+      "description": "Feature aimed to preserve data about parts used in repairments (orders).\nIdea behind this feature is to have parts history of particullar order - and such informations can be usefull in many cases e.g. client's reclamation or order's price complaints, repaired car model is rare, parts had poor quality etc...)."
+    }
+  ]
+}
