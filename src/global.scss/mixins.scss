@@ -112,7 +112,7 @@
   min-height: 300px;
   // mobile only
   @media screen and (max-width: $break-small) {
-    width: 300px;
+    width: 90%;
     height: auto;
   }
 }
@@ -122,6 +122,8 @@
   border: none;
   padding: 5px 25px;
   border-radius: 5px;
+  color: $white;
+
   &:hover{
     color: $white-indistinct;
   }
@@ -194,6 +196,10 @@
       }
       &.reversed {
         transform: rotateY(180deg);
+
+        .front {
+          display: none;
+        }
       }
     }
   }

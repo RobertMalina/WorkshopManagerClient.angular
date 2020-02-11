@@ -13,13 +13,25 @@ $card-max-width: 400px;
   max-width: $card-max-width;
   overflow: hidden;
   border-radius: 5px;
+  @media screen and (max-width: $break-small) {
+    border-radius: 0;
+  }
 }
 
 .feature-card {
+  @media screen and (max-width: $break-small) {
+    width: 100vw;
+  }
   color: $white-indistinct;
   background-color: $light-black;
+
+  line-height: 20px;
+  letter-spacing: 1px;
+
   .feature-card-side {
+
     padding: 5px 10px 20px;
+
     .main-title {
       color: $white;
       font-weight: 500;
@@ -46,7 +58,6 @@ $card-max-width: 400px;
       button {
         @include app-button();
         padding: 5px 35px;
-        color: $white;
       }
     }
   }

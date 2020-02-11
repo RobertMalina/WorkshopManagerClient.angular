@@ -49,7 +49,6 @@ $panel-height: 300px;
   #invitation-panel {
     overflow-x: hidden;
     > #skewed-overlay{
-      left: 35%;
       width: auto;
       padding: 0 0 0 60px;
     }
@@ -58,6 +57,7 @@ $panel-height: 300px;
     }
     .img {
       width: 50% !important;
+      background-position: 60%;
     }
   }
 }

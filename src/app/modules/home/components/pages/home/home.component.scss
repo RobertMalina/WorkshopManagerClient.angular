@@ -14,13 +14,25 @@
     }
   }
 
-  > #features-cards-container{
+  > #features-cards-container {
     padding: 20px 40px;
+
+    @media screen and (max-width: $break-small) {
+      padding: 0;
+    }
+
     > .masonry-grid {
       margin: 0px auto;
 
       > .feature-masonry-item {
         margin-bottom: 10px;
+      }
+
+      @media screen and (max-width: $break-small) {
+        width: 100vw !important;
+        > .feature-masonry-item {
+          margin-bottom: 1px;
+        }
       }
     }
   }
