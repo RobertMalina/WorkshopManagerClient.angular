@@ -1,5 +1,5 @@
 $b: 5px; // border-width
-$panel-height: 300px;
+$panel-height: 250px;
 @import '../../../../../global.scss/variables.scss';
 
 #invitation-panel {
@@ -16,7 +16,7 @@ $panel-height: 300px;
     background: url("../../../../../assets/images/alfa-159-open-mask.webp");
     background-clip: border-box;
     background-origin: border-box;
-    background-position: 50%;
+    background-position: 55% 60%;
   }
   > #skewed-overlay {
     position: absolute;
@@ -31,15 +31,14 @@ $panel-height: 300px;
 
 
     > #content-container {
+      line-height: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      transform: skew(-20deg);
+      z-index: 2;
       > h2 {
         font-weight: 700;
       }
-      line-height: 25px;
-      font-size: 16px;
-      font-weight: 600;
-
-      transform: skew(-20deg);
-      z-index: 2;
     }
  }
 }
