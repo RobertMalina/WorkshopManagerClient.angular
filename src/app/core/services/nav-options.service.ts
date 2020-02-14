@@ -39,10 +39,10 @@ export class NavOptionsService {
         ]
       },
       {
-        link: '/orders', title: 'Orders', roles: roles.regular,
+        link: '/orders', title: 'Orders', roles: roles.anonymous,
         childs: [
-          { link: '/orders/preview', title: 'Preview', roles: roles.regular },
-          { link: '/orders/register', title: 'Register', roles: roles.supervisor }
+          { link: '/orders/preview', title: 'Preview', roles: roles.anonymous },
+          { link: '/orders/register', title: 'Register', roles: roles.anonymous }
         ]
       },
       {

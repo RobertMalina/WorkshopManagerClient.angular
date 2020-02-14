@@ -1,9 +1,10 @@
+import { OrdersComponent } from './pages/orders.component';
 import { OrderRegisterComponent } from './pages/order-register/order-register.component';
-import { OrderListComponent } from './pages/order-preview/order-list/order-list.component';
 import { OrderDetailsComponent } from './pages/order-preview/order-details/order-details.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { OrdersResolverService } from './orders-resolver.service';
+import { OrderPreviewComponent } from './pages/order-preview/order-preview.component';
 
 
 export const routes: Routes = [
@@ -16,18 +17,25 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'preview',
-    component: OrderListComponent
-  },
-  {
-    path: 'register',
-    component: OrderRegisterComponent
-  },
-  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'preview'
+  },
+  {
+    path: '',
+    component: OrdersComponent,
+    children: [
+      {
+        path: 'preview',
+        component: OrderPreviewComponent
+      },
+      {
+        path: 'register',
+        component: OrderRegisterComponent
+      },
+    ]
   }
+
 ];
 
 @NgModule({

@@ -1,4 +1,9 @@
 @import './variables.scss';
 @import "~ng-pick-datetime/assets/style/picker.min.css";
 
-
+.subfeature-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: $blue;
+  margin: 10px 0;
+}

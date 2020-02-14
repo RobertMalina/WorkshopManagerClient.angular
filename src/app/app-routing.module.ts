@@ -1,6 +1,6 @@
+import { OrdersComponent } from './modules/orders/pages/orders.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { InvitationPanelComponent } from './modules/home/components/invitation-panel/invitation-panel.component';
-import { HomeComponent } from './modules/home/components/pages/home/home.component';
 import { AuthPageLayoutComponent } from './layout/auth-page/auth-page-layout.component';
 import { MainLayoutComponent } from './layout/main/main-layout.component';
 import { NgModule } from '@angular/core';
@@ -16,14 +16,15 @@ const routes: Routes = [
     path: '',
     component: MainLayoutComponent,
     children: [
-      // {
-      //   path: 'dashboard',
-      //   loadChildren: () =>
-      //     import('./modules/home/home.module').then(m => m.HomeModule)
-      // },
       {
         path: 'home',
-        loadChildren: './modules/home/home.module#HomeModule'
+        loadChildren: () =>
+          import('./modules/home/home.module').then(m => m.HomeModule)
+      },
+      {
+        path: 'orders',
+        loadChildren: () =>
+          import('./modules/orders/orders.module').then(m => m.OrdersModule)
       }
     ]
   },

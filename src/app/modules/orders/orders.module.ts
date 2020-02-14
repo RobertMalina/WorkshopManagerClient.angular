@@ -1,3 +1,4 @@
+import { OrderDetailsComponent } from './pages/order-preview/order-details/order-details.component';
 import { OrderRegisterFormComponent } from './pages/order-register/order-register-form/order-register-form.component';
 import { OrderSummaryComponent } from './pages/order-register/order-summary/order-summary.component';
 import { OrderFilterComponent } from './pages/order-preview/order-list/order-filter/order-filter.component';
@@ -22,6 +23,7 @@ import { OrderProgressComponent } from './pages/order-preview/order-list/order-l
     OrderFilterComponent,
     OrderListItemComponent,
     OrderProgressComponent,
+    OrderDetailsComponent,
 
     OrderRegisterComponent,
     OrderRegisterFormComponent,
