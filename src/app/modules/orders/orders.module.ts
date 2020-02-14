@@ -33,7 +33,8 @@ import { OrderProgressComponent } from './pages/order-preview/order-list/order-l
   imports: [
     SharedModule,
     NgxPaginationModule,
-    OrdersRoutingModule
+    OrdersRoutingModule,
+    SharedModule
   ],
   providers: [
 

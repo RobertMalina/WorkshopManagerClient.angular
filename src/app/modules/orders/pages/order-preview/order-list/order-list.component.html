@@ -1,8 +1,15 @@
-<p>
-  order-list works!
-</p>
 <div id="orders-list">
-  <div class="list-filters-container">
-    <app-order-filter></app-order-filter>
+  <div class="orders-list-header">
+    <div class="filters-container">
+      <fa-icon class="header-icon" [icon]="faFilterIcon"></fa-icon>
+      <app-order-filter></app-order-filter>
+    </div>
+    <div class="button-section">
+      <button (click)="applyFilters()">Apply</button>
+    </div>
+    <div class="sort-by-container">
+
+    </div>
   </div>
+
 </div>

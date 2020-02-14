@@ -1,0 +1,42 @@
+@import '../../../../../../global.scss/variables.scss';
+@import '../../../../../../global.scss/mixins.scss';
+
+#orders-list{
+  width: 80vw;
+  min-height: 100px;
+  margin: 0 auto;
+
+  > .orders-list-header{
+
+    background-color: $aerial-blue;
+    display: flex;
+    padding: 10px 20px;
+
+    > .filters-container {
+
+      position: relative;
+      width: 80%;
+      padding-left: 20px;
+
+      > .header-icon{
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 25px;
+        color: $blue;
+      }
+    }
+
+    > .button-section{
+
+      width: 20%;
+      display: flex;
+      justify-content: center;
+
+      button{
+        @include app-button();
+        height: 50px;
+      }
+    }
+  }
+}

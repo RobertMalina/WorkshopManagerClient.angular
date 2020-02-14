@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-order-list',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderListComponent implements OnInit {
 
+  faFilterIcon = faFilter;
+
+  private itemHeight = 150;
+  private itemOnPage = 5;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  applyFilters() {
+
+  }
 }
