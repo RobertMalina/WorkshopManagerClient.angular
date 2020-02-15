@@ -1,0 +1,46 @@
+@import 'src/global.scss/variables.scss';
+@import 'src/global.scss/mixins.scss';
+
+$bar-height: 10px;
+
+.order-progress-bar{
+  padding: 5px 10px;
+
+}
+
+.bars-container{
+  min-height: $bar-height;
+  position: relative;
+
+  > .time-bar {
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    transition: width 2s;
+    height: $bar-height;
+  }
+  > .spent-time-bar {
+    z-index: 1;
+    background-image: linear-gradient($light-green, $green-distinct);
+    transition: width 3s;
+  }
+  > .estimated-time-bar {
+    z-index: 0;
+    background-image: linear-gradient($aerial-blue, $blue-distinct);
+    transition: width 1s;
+  }
+
+  > .time-label-set {
+    width: 50%;
+  }
+}
+
+.labels-container {
+  > .time-label-set{
+    display: inline;
+  }
+  display: flex;
+  justify-content: space-between;
+}
