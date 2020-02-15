@@ -1,3 +1,4 @@
+import { LogoutComponent } from './shared/components/logout/logout.component';
 import { OrdersComponent } from './modules/orders/pages/orders.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { InvitationPanelComponent } from './modules/home/components/invitation-panel/invitation-panel.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
     redirectTo: '/home',
     pathMatch: 'full'
   },
+
   {
     path: '',
     component: MainLayoutComponent,
@@ -32,6 +34,10 @@ const routes: Routes = [
     path: 'auth',
     component: AuthPageLayoutComponent,
     children: [
+      {
+        path: 'logout',
+        component: LogoutComponent
+      },
       {
         path: 'login',
         loadChildren: './modules/auth/auth-page.module#AuthPageModule'

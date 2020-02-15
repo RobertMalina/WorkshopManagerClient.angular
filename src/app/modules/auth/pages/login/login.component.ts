@@ -50,10 +50,14 @@ export class AppLoginComponent {
     this.authService.login(this.fc.username.value, this.fc.password.value)
       .pipe(first())
       .subscribe(
-        () => {
-          this.returnToUrl ?
-            this.router.navigate([this.returnToUrl]) :
-            this.router.navigate(['home']);
+        (loginResult) => {
+          if (loginResult.isAuthenticated) {
+            this.returnToUrl ?
+              this.router.navigate([this.returnToUrl]) :
+              this.router.navigate(['home']);
+          } else {
+            this.error = loginResult.message || 'Login data is invalid.';
+          }
         },
         error => {
           console.error(error);

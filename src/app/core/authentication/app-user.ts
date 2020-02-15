@@ -1,3 +1,4 @@
+import { ILoginResult } from './i-login-result';
 import { AppRole } from './app-role';
 
 export class AppUser {

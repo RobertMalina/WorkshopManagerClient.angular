@@ -1,3 +1,4 @@
+import { LogoutComponent } from './components/logout/logout.component';
 import { LimitedTextDisplayPipe } from './pipes/limited-text-display.pipe';
 import { ServerErrorDisplayPipe } from './pipes/server-error-display.pipe';
 import { RouterModule } from '@angular/router';
@@ -14,7 +15,8 @@ import { library as fontAwsItems } from '@fortawesome/fontawesome-svg-core';
 @NgModule({
   declarations: [
     ServerErrorDisplayPipe,
-    LimitedTextDisplayPipe
+    LimitedTextDisplayPipe,
+    LogoutComponent
   ],
   imports: [
     OwlDateTimeModule,

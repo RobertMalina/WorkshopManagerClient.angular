@@ -1,3 +1,4 @@
+import { ILoginResult } from './../authentication/i-login-result';
 import { config } from './../config.constants';
 import { AppRolesContract } from './../authentication/app-roles-contract';
 import { RolesService } from './roles.service';
@@ -5,7 +6,7 @@ import { Observable, Subject, interval, BehaviorSubject } from 'rxjs';
 import { AppUser } from './../authentication/app-user';
 import { Injectable } from '@angular/core';
 import { AppRole } from '../authentication/app-role';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -18,6 +19,13 @@ export class AuthService {
   private anonymous: AppUser;
   loggedUser: BehaviorSubject<AppUser>;
   private appRoles: AppRolesContract;
+
+  private httpHeaders = {
+    headers: new HttpHeaders({
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
+    })
+  };
 
   constructor(private httpClient: HttpClient, private rolesService: RolesService) {
     this.anonymous = new AppUser('anonymous_visitor', 'token-null', rolesService.getAnonymousRoles());
@@ -51,17 +59,31 @@ export class AuthService {
     return this.loggedUser.value;
   }
 
-  login(username: string, password: string): Observable<AppUser> {
-    return this.httpClient.post<AppUser>(`${config.getApiUrl()}/auth/login`,
-      { Username: username, Password: password })
+  private fromLoginResult(result: ILoginResult): AppUser {
+    const userRoles: AppRole[] = [];
+    if (result.roles) {
+      result.roles.forEach(r => userRoles.push(new AppRole(r)));
+    }
+    return new AppUser(
+      result.username,
+      result.token,
+      userRoles.length > 0 ? userRoles : null);
+  }
+
+  login(username: string, password: string): Observable<ILoginResult> {
+    return this.httpClient.post<ILoginResult>(`${config.getApiUrl()}/auth/login`,
+      { username, password }, this.httpHeaders)
       .pipe(
-        map(user => {
-          console.log(user);
-          if (user && user.token) {
+        map(result => {
+
+          if (result && result.token && result.isAuthenticated) {
+            const user: AppUser = this.fromLoginResult(result);
             this.persistUserInLocal(user);
             this.switchUser(user);
+            console.log(user.roles);
+
           }
-          return user;
+          return result;
         }));
   }
 

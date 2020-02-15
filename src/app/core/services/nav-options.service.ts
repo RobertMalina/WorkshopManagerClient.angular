@@ -35,14 +35,14 @@ export class NavOptionsService {
         link: '/account', title: 'Account', roles: roles.regular,
         childs: [
           { link: '/account/manage', title: 'Manage', roles: roles.regular },
-          { link: '/account/login', title: 'Log-out', roles: roles.regular }
+          { link: '/auth/logout', title: 'Log-out', roles: roles.regular }
         ]
       },
       {
-        link: '/orders', title: 'Orders', roles: roles.anonymous,
+        link: '/orders', title: 'Orders', roles: roles.supervisor,
         childs: [
-          { link: '/orders/preview', title: 'Preview', roles: roles.anonymous },
-          { link: '/orders/register', title: 'Register', roles: roles.anonymous }
+          { link: '/orders/preview', title: 'Preview', roles: roles.supervisor },
+          { link: '/orders/register', title: 'Register', roles: roles.supervisor }
         ]
       },
       {

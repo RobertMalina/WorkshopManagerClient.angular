@@ -40,7 +40,7 @@ import { faCaretDown, faBars, faChevronUp } from '@fortawesome/free-solid-svg-ic
     <a [routerLink]="[option.link]" routerLinkActive='active'>{{ option.title | uppercase }}</a>
   </ng-template>
   <ng-template #withChilds let-option='option'>
-    <span><a [routerLink]="[option.link]" routerLinkActive='active'>{{ option.title | uppercase }}</a> </span>
+    <span><a  [routerLink]="[option.link]" routerLinkActive='active'>{{ option.title | uppercase }}</a> </span>
     <fa-icon [icon]="faCaretDownIcon"></fa-icon>
   </ng-template>
   `,
