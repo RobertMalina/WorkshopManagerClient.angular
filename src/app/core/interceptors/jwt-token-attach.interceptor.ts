@@ -11,7 +11,8 @@ export class JWTAttachInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const currentUser = this.authService.getCurrentUser();
     const isLoggedIn = currentUser && currentUser.token;
-    const isApiUrl = req.url.startsWith(config.apiPrefix);
+    const isApiUrl = req.url.indexOf(config.apiPrefix) !== -1;
+
     if (isLoggedIn && isApiUrl) {
       req = req.clone({
         setHeaders: {

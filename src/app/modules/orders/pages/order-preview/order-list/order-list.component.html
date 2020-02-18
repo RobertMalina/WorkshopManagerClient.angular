@@ -12,9 +12,7 @@
     </div>
   </div>
   <div class="order-list-rows-container">
-    <app-order-list-item></app-order-list-item>
-    <app-order-list-item></app-order-list-item>
-    <app-order-list-item></app-order-list-item>
+    <app-order-list-item [order]="order" *ngFor="let order of itemResults$ | async"></app-order-list-item>
   </div>
 
 </div>

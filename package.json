@@ -26,6 +26,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "bootstrap": "^3.4.1",
     "cors": "^2.8.5",
+    "lodash": "^4.17.15",
     "ng-pick-datetime": "^7.0.0",
     "ngx-masonry": "^1.1.4",
     "ngx-pagination": "^5.0.0",

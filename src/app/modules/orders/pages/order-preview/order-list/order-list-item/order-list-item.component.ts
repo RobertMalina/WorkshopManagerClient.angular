@@ -1,6 +1,7 @@
 import { OrderProgressBarConfig } from './../../../../../../core/models/bussines-logic/order-progressbar-config';
 import { Order } from 'src/app/core/models/bussines-logic/order';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { OrderStatus } from 'src/app/core/models/bussines-logic/order-status.enum';
 
 @Component({
   selector: 'app-order-list-item',
@@ -13,11 +14,11 @@ import { Component, OnInit } from '@angular/core';
         <div class="datetimes-section section">
           <div class="data-row order-date">
             <span class="lbl"> Date register:</span>
-            <span class="val"> {{ order.registerDate | date}} </span>
+            <span class="val"> {{ order.dateRegister | date}} </span>
           </div>
           <div class="data-row order-date">
             <span class="lbl"> Date start:</span>
-            <span class="val"> {{ order.registerDate | date}} </span>
+            <span class="val"> {{ order.dateRegister | date}} </span>
           </div>
         </div>
       </div>
@@ -46,22 +47,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderListItemComponent implements OnInit {
 
-  order: Order;
+  @Input() order: Order;
 
   constructor() {
-
-    this.order = {
-      title: 'Wymiana sprzęgła & dwumasa',
-      vehicleDescription: 'Alfa 159 SW 1.9 TDI 16v',
-      registerDate: new Date(),
-      estimatedTime: 24,
-      spentTime: 16,
-      supervisor: {
-        firstName: 'Jan',
-        lastName: 'Kowalski',
-        phoneNumber: '321 892 112'
-      }
-    };
   }
 
   getProgressBarConfigFor(): OrderProgressBarConfig {

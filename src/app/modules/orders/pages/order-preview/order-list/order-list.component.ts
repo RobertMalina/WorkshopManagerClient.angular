@@ -1,7 +1,11 @@
-import { map, filter, debounceTime, distinct } from 'rxjs/operators';
+import { Order } from './../../../../../core/models/bussines-logic/order';
+import { OrdersService } from './../../../../../core/services/bussines-logic/orders.service';
+import { IOrderStatusFilters } from './../../../../../core/models/bussines-logic/i-order-status-filters';
+import { map, filter, debounceTime, distinct, tap, flatMap } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
-import { BehaviorSubject, fromEvent } from 'rxjs';
+import { BehaviorSubject, merge, Observable, fromEvent } from 'rxjs';
+import * as _ from 'lodash';
 
 
 @Component({
@@ -13,9 +17,14 @@ export class OrderListComponent implements OnInit {
 
   faFilterIcon = faFilter;
 
-  private listItemHeight = 150;
+  private listItemHeight = 200;
   private itemsOnPage = 5;
   private fetchNextDelayMs = 300;
+  private loading = false;
+
+  private cachedOrders: Order[][];
+
+  statusFilters: IOrderStatusFilters;
 
   private scrollHandler$ = fromEvent(window, 'scroll')
     .pipe(
@@ -38,9 +47,45 @@ export class OrderListComponent implements OnInit {
 
   private manualHandler$ = new BehaviorSubject(1);
 
-  constructor() { }
+  private pageToLoad$ = merge(
+    this.manualHandler$,
+    this.scrollHandler$,
+    this.resizeHandler$)
+    .pipe(
+      distinct(),
+      filter(page => this.cachedOrders[page - 1] === undefined)
+    );
+
+  itemResults$: Observable<Order[]> = this.pageToLoad$
+    .pipe(
+      tap(() => this.loading = true),
+      flatMap((page: number) => {
+        return this.ordersService.pagedOrders(page, this.itemsOnPage, this.statusFilters)
+          .pipe(
+            map((resp: Order[]) => resp),
+            tap(resp => {
+              this.cachedOrders[page - 1] = resp;
+              if ((this.listItemHeight * this.itemsOnPage * page) < window.innerHeight) {
+                this.manualHandler$.next(page + 1);
+              }
+            })
+          );
+      }),
+      map(() => _.flatten(this.cachedOrders).filter(o => o !== undefined))
+    );
+
+  constructor(private ordersService: OrdersService) {
+    this.cachedOrders = [];
+    this.statusFilters = {
+      finished: true,
+      registered: true,
+      inProgress: true
+    };
+  }
+
 
   ngOnInit() {
+
   }
 
   applyFilters() {
