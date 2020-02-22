@@ -20,9 +20,7 @@ import { faCaretDown, faBars, faChevronUp } from '@fortawesome/free-solid-svg-ic
     <ng-template #recursiveList let-options>
       <li *ngFor="let option of options"
         [ngClass]="option.childs ? 'sub-menu-container':''"
-        [attr.title] ="option.title"
-        #liElement
-        (click)="onOptionClick(liElement.getAttribute('title'))">
+        [attr.title] ="option.title">
         <ng-container
           [ngTemplateOutlet]="option.childs ? withChilds : single"
           [ngTemplateOutletContext]="{option:option}">
@@ -58,10 +56,6 @@ export class NavOptionsComponent implements OnInit {
   selectedOptionName = 'Home';
 
   constructor() { }
-
-  onOptionClick(title: string) {
-    console.log(title);
-  }
 
   ngOnInit(): void {
   }
