@@ -1,3 +1,11 @@
-<p>
-  order-client-form works!
-</p>
+<p>Client's data</p>
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+  <div class="input-group">
+    <p class="input-label">Firstname</p>
+    <input formControlName="firstname" [ngClass]="{ 'invalid': formSubmitted && fc.firstname.errors }" type="text" />
+  </div>
+  <div class="input-group">
+    <p class="input-label">Lastname</p>
+    <input formControlName="lastname" [ngClass]="{ 'invalid': formSubmitted && fc.lastname.errors }" type="text" />
+  </div>
+</form>

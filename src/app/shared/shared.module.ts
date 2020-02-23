@@ -26,7 +26,6 @@ import { library as fontAwsItems } from '@fortawesome/fontawesome-svg-core';
     CommonModule,
     FontAwesomeModule,
     RouterModule,
-    FormsModule,
     ReactiveFormsModule
   ],
   providers: [],
@@ -40,7 +39,6 @@ import { library as fontAwsItems } from '@fortawesome/fontawesome-svg-core';
     RouterModule,
     ServerErrorDisplayPipe,
     LimitedTextDisplayPipe,
-    FormsModule,
     ReactiveFormsModule,
     NgxMasonryModule
   ]

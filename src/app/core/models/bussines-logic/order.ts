@@ -5,6 +5,7 @@ import { OrderStatus } from './order-status.enum';
 export class Order {
   title: string;
   vehicleDescription: string;
+  description?: string;
   dateRegister: Date;
   dateStart?: Date;
   dateEnd?: Date;

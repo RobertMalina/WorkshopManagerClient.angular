@@ -1,6 +1,33 @@
-<p>
-  order-register-form works!
-</p>
 <div class="order-form-container">
+  <section class="sample-app-content">
+    <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
 
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+          placeholder="Ex. pat@example.com">
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <div class="input-group">
+        <p class="input-label">Title</p>
+        <input formControlName="title" [ngClass]="{ 'invalid': formSubmitted && fc.orderTitle.errors }" type="text" />
+      </div>
+      <div class="input-group">
+        <p class="input-label">Vehicle info</p>
+        <input formControlName="vehicleDescription"
+          [ngClass]="{ 'invalid': formSubmitted && fc.orderVehicleDesc.errors }" type="text" />
+      </div>
+      <app-order-client-form></app-order-client-form>
+      <div class="input-group bottom">
+        <button [disabled]="!orderForm.valid" type="submit">Submit</button>
+      </div>
+    </form>
+  </section>
 </div>

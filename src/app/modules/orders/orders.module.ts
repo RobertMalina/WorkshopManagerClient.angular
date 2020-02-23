@@ -13,6 +13,8 @@ import { OrderPreviewComponent } from './pages/order-preview/order-preview.compo
 import { OrderRegisterComponent } from './pages/order-register/order-register.component';
 import { OrderListItemComponent } from './pages/order-preview/order-list/order-list-item/order-list-item.component';
 import { OrderProgressComponent } from './pages/order-preview/order-list/order-list-item/order-progress/order-progress.component';
+import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { OrderProgressComponent } from './pages/order-preview/order-list/order-l
     SharedModule,
     NgxPaginationModule,
     OrdersRoutingModule,
-    SharedModule
+    SharedModule,
+    MatInputModule
   ],
   providers: [
 
