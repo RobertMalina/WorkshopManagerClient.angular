@@ -2,6 +2,7 @@ import { map, filter } from 'rxjs/operators';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Order } from './../../../../../core/models/bussines-logic/order';
 import { Component, OnInit } from '@angular/core';
+import { FormErrorStateMatcher } from 'src/app/core/models/helpers/form-error-state-matcher';
 
 @Component({
   selector: 'app-order-register-form',
@@ -14,14 +15,19 @@ export class OrderRegisterFormComponent implements OnInit {
   orderForm: FormGroup;
   formSubmitted: boolean;
 
-  orderTitle = new FormControl('', Validators.required);
-  orderVehicleDesc = new FormControl('', Validators.required);
+  matcher = new FormErrorStateMatcher();
+
+  title = new FormControl('', Validators.required);
+  vehicleDescription = new FormControl('', Validators.required);
+  clientData = new FormControl('');
 
   constructor(formBuilder: FormBuilder) {
     this.order = new Order();
+
     this.orderForm = formBuilder.group({
-      title: this.orderTitle,
-      vehicleDescription: this.orderVehicleDesc
+      title: this.title,
+      vehicleDescription: this.vehicleDescription,
+      clientData: this.clientData
     });
 
     this.orderForm.valueChanges.pipe(

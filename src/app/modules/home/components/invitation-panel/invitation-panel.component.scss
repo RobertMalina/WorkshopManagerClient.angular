@@ -14,7 +14,7 @@ $panel-height: 250px;
     background-clip: border-box;
     background-origin: border-box;
     background-position: 55% 60%;
-    background-image: linear-gradient($aerial-blue, $aerial-blue), url("../../../../../assets/images/alfa-159-open-mask.webp") ;
+    background-image: linear-gradient($aerial-blue, $aerial-blue), url("src/assets/images/alfa-159-open-mask.webp") ;
   }
   > #skewed-overlay {
     position: absolute;

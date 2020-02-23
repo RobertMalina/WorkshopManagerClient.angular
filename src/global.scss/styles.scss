@@ -1,5 +1,6 @@
 @import './variables.scss';
 @import './mixins.scss';
 @import "~ng-pick-datetime/assets/style/picker.min.css";
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 @include sub-feature-title();

@@ -52,7 +52,7 @@ export class OrderListItemComponent implements OnInit {
   constructor() {
   }
 
-  getProgressBarConfigFor(): OrderProgressBarConfig {
+  getProgressBarConfigFor(order: Order): OrderProgressBarConfig {
     return {
       estimatedTime: 24,
       spentTime: 18

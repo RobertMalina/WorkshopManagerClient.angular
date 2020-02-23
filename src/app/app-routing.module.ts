@@ -40,11 +40,11 @@ const routes: Routes = [
       },
       {
         path: 'login',
-        loadChildren: './modules/auth/auth-page.module#AuthPageModule'
+        loadChildren: () => import('./modules/auth/auth-page.module').then(m => m.AuthPageModule)
       },
       {
         path: 'register',
-        loadChildren: './modules/auth/auth-page.module#AuthPageModule'
+        loadChildren: () => import('./modules/auth/auth-page.module').then(m => m.AuthPageModule)
       }
     ]
   },
