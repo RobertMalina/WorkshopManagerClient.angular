@@ -21,7 +21,7 @@
         </mat-error>
       </mat-form-field>
 
-      <app-order-client-form [formControlName]="clientData"></app-order-client-form>
+      <app-order-client-form formControlName="clientData"></app-order-client-form>
 
       <div class="input-group bottom">
         <button [disabled]="!orderForm.valid" type="submit">Submit</button>

@@ -58,7 +58,7 @@ export class OrderClientFormComponent implements OnInit, ControlValueAccessor {
   public onTouched: () => void = () => { };
 
   writeValue(val: any): void {
-    this.clientForm.setValue(val, { emitEvent: false });
+    val && this.clientForm.setValue(val, { emitEvent: false });
   }
   registerOnChange(fn: any): void {
     this.clientForm.valueChanges.subscribe(fn);
