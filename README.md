@@ -15,7 +15,7 @@ I plan every feature both of logical and design aspect, as I implement software 
 Below I posted example logical scheme of some component tree which is included in application:
 
 <p align="center">
-  <img src="/doc/ordermodule_v1.png" alt="WorkshopManager.ng" width="400px">
+  <img src="/doc/ordermodule_v1.png" alt="WorkshopManager.ng" width="600px">
 </p>
 
 #  Some of implemented features
@@ -37,7 +37,7 @@ Because "alive" application is still not available, I decided to post a bunch of
 
 ## Login page (mobile, emulated in GC Dev Tools)
 <p align="center">
-  <img src="/doc/login-page.mobile.PNG" alt="Login page (mobile)" width="300px" height="400px">
+  <img src="/doc/login-page.mobile.PNG" alt="Login page (mobile)" width="360px">
 </p>
 
 ## Home page - with priviledged user logged in, desktop mode.
@@ -50,19 +50,19 @@ Because "alive" application is still not available, I decided to post a bunch of
   <img src="/doc/home-page-cards.PNG" alt="home-page-cards (desktop)">
 </p>
 
-## Home page (mobile, emulated in GC Dev Tools)
+## Home page (mobile)
 <p align="center">
-  <img src="/doc/home-page-mobile.PNG" alt="Login page (mobile)" width="300px" height="400px">
+  <img src="/doc/home-page-mobile.PNG" alt="Login page (mobile)" width="360px">
 </p>
 
-## Home page ngMasonry cards with features detailed description (mobile, emulated in GC Dev Tools)
+## Home page ngMasonry cards with features detailed description (mobile)
 <p align="center">
-  <img src="/doc/home-page-mobile-card.PNG" alt="home-cards-desktop">
+  <img src="/doc/home-page-mobile-card.PNG" alt="home-cards-desktop" width="360px">
 </p>
 
 ## Responsive navigation menu behaviour (mobile)
 <p align="center">
-  <img src="/doc/home-page-mobile-menu-expanded.PNG" alt="resp-nav-menu behaviour)">
+  <img src="/doc/home-page-mobile-menu-expanded.PNG" alt="resp-nav-menu behaviour)" width="360px">
 </p>
 
 ## Orders list (desktop)
@@ -72,5 +72,5 @@ Because "alive" application is still not available, I decided to post a bunch of
 
 ## Orders list (mobile)
 <p align="center">
-  <img src="/doc/orders-preview-mobile.PNG" alt="Login page (mobile)" width="300px" height="400px">
+  <img src="/doc/orders-preview-mobile.PNG" alt="Login page (mobile)" width="360px">
 </p>
