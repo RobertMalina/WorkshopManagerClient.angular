@@ -6,7 +6,7 @@ This project provides user web interface which exposes features of _Workshop Man
 
 I am aware that it would be best, to host this project on some server to set it available to You (it also would require setup of serverside including MSSQL database), so You would be able to examine how it works e.g. if it works in responsive manner in different devices. But unfortunately, project is still not finished and verified.
 
-*However, I invite you to check the sample application screens - please check Screenshots paragraph listed below.*
+<b>However, I invite you to look at the sample app screens - please check Screenshots paragraph listed below.</b>
 
 I try to extend this project at my free time, but every new feature need to be implemented by me both in server-side and client-side (client-side is covered by this repository itself) and in some cases, some changes in database (MSSQL) are required. In addition, each feature is carefully planned by me - so it tooks a lot of my time.
 
@@ -29,30 +29,46 @@ Below I posted example logical scheme of some component tree which is included i
 Because "alive" application is still not available, I decided to post a bunch of screenshots, which I hope, will give You some taste of how it looks and works.
 
 ## Login page (desktop, shrinked mode)
-![alt WorkshopManager.ng](/doc/login-page.PNG)
+<p align="center">
+  <img src="/doc/login-page.PNG" alt="WorkshopManager.ng" width="500px" height="400px">
+</p>
 
 ## Login page (mobile, emulated in GC Dev Tools)
-![alt WorkshopManager.ng](/doc/login-page.mobile.PNG)
+<p align="center">
+  <img src="/doc/login-page.mobile.PNG" alt="Login page (mobile)" width="300px" height="400px">
+</p>
 
 ## Home page - with priviledged user logged in, desktop mode.
-![alt WorkshopManager.ng](/doc/home-page.PNG)
+<p align="center">
+  ![alt WorkshopManager.ng](/doc/home-page.PNG)
+</p>
 
 ## Home page - ngMasonry cards with features detailed description.
-![alt WorkshopManager.ng](/doc/home-page-cards.PNG)
+<p align="center">
+  ![alt WorkshopManager.ng](/doc/home-page-cards.PNG)
+</p>
 
 ## Home page (mobile, emulated in GC Dev Tools)
-![alt Home page-mobile](/doc/home-page-mobile.PNG)
+<p align="center">
+  <img src="/doc/home-page-mobile.PNG" alt="Login page (mobile)" width="300px" height="400px">
+</p>
 
 ## Home page ngMasonry cards with features detailed description (mobile, emulated in GC Dev Tools)
-![alt Home page-cards-mobile](/doc/home-page-mobile-card.PNG)
+<p align="center">
+  ![alt Home page-cards-mobile](/doc/home-page-mobile-card.PNG)
+</p>
 
 ## Responsive navigation menu behaviour (mobile)
-![alt Orders list](/doc/home-page-mobile-menu-expanded.PNG)
+<p align="center">
+  ![alt Orders list](/doc/home-page-mobile-menu-expanded.PNG)
+</p>
 
 ## Orders list (desktop)
-![alt Orders list](/doc/orders-preview.PNG)
+<p align="center">
+  ![alt Orders list](/doc/orders-preview.PNG)
+</p>
 
 ## Orders list (mobile)
-![alt Orders list](/doc/orders-preview-mobile.PNG)
-
-
+<p align="center">
+  <img src="/doc/orders-preview-mobile.PNG" alt="Login page (mobile)" width="300px" height="400px">
+</p>
