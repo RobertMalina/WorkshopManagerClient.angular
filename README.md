@@ -18,15 +18,15 @@ Below I posted example logical scheme of some component tree which is included i
 
 #  Some of implemented features
 
-## JWT based authentication with Http requests interception - token is attached "in flight" to request header - so when user is authenticated, request will be positive verified by server side, if it is not expired.
-## Home page which utilize NgMasonry feature.
-## Role based navigation menu (allowed options depends on roles possesed by user).
-## Logical modularization - app is divided into three logical modules which are lazy loaded.
-## RxJs based "lazy loaded" scrollable list of Orders (repairments) - where I don't fetch all of the orders from database at once - but, as user scrolls down - next five orders are fetched - under the hood, server invokes my  SQL stored procedure (check how it looks here: https://github.com/RobertMalina/WorkshopManager.sql/blob/master/OrdersOfPage.tab.sql) which takes such params as itemsOnPage, Page (and filter params).
+- JWT based authentication with Http requests interception - token is attached "in flight" to request header - so when user is authenticated, request will be positive verified by server side, if it is not expired.
+- Home page which utilize NgMasonry feature.
+- Role based navigation menu (allowed options depends on roles possesed by user).
+- Logical modularization - app is divided into three logical modules which are lazy loaded.
+- RxJs based "lazy loaded" scrollable list of Orders (repairments) - where I don't fetch all of the orders from database at once - but, as user scrolls down - next five orders are fetched - under the hood, server invokes my  SQL stored procedure (check how it looks here: https://github.com/RobertMalina/WorkshopManager.sql/blob/master/OrdersOfPage.tab.sql) which takes such params as itemsOnPage, Page (and filter params).
 
 # Screenshots
 
-Because "alive" application is still not avaible, I decided to post some of screenshots which, I hope, will give You some taste of how it looks and works.
+Because "alive" application is still not available, I decided to post a bunch of screenshots, which I hope, will give You some taste of how it looks and works.
 
 ## Login page (desktop, shrinked mode)
 ![alt WorkshopManager.ng](/doc/login-page.PNG)
