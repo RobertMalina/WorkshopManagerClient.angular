@@ -14,7 +14,9 @@ I plan every feature both of logical and design aspect, as I implement software 
 
 Below I posted example logical scheme of some component tree which is included in application:
 
-![alt text](/doc/ordermodule_v1.png)
+<p align="center">
+  <img src="/doc/ordermodule_v1.png" alt="WorkshopManager.ng" width="400px">
+</p>
 
 #  Some of implemented features
 
@@ -40,12 +42,12 @@ Because "alive" application is still not available, I decided to post a bunch of
 
 ## Home page - with priviledged user logged in, desktop mode.
 <p align="center">
-  ![alt WorkshopManager.ng](/doc/home-page.PNG)
+  <img src="/doc/home-page.PNG" alt="home-page (desktop)">
 </p>
 
 ## Home page - ngMasonry cards with features detailed description.
 <p align="center">
-  ![alt WorkshopManager.ng](/doc/home-page-cards.PNG)
+  <img src="/doc/home-page-cards.PNG" alt="home-page-cards (desktop)">
 </p>
 
 ## Home page (mobile, emulated in GC Dev Tools)
@@ -55,17 +57,17 @@ Because "alive" application is still not available, I decided to post a bunch of
 
 ## Home page ngMasonry cards with features detailed description (mobile, emulated in GC Dev Tools)
 <p align="center">
-  ![alt Home page-cards-mobile](/doc/home-page-mobile-card.PNG)
+  <img src="/doc/home-page-mobile-card.PNG" alt="home-cards-desktop">
 </p>
 
 ## Responsive navigation menu behaviour (mobile)
 <p align="center">
-  ![alt Orders list](/doc/home-page-mobile-menu-expanded.PNG)
+  <img src="/doc/home-page-mobile-menu-expanded.PNG" alt="resp-nav-menu behaviour)">
 </p>
 
 ## Orders list (desktop)
 <p align="center">
-  ![alt Orders list](/doc/orders-preview.PNG)
+  <img src="/doc/orders-preview.PNG" alt="Orders list (desktop)">
 </p>
 
 ## Orders list (mobile)
