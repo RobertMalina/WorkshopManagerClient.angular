@@ -58,6 +58,7 @@ export class OrderClientFormComponent implements OnInit, ControlValueAccessor {
   public onTouched: () => void = () => { };
 
   writeValue(val: any): void {
+    // tslint:disable-next-line: no-unused-expression
     val && this.clientForm.setValue(val, { emitEvent: false });
   }
   registerOnChange(fn: any): void {
